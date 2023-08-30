@@ -2,9 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/constants/colors.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+
 import 'package:intl/intl.dart';
+import 'package:studdy/constants/colors.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 
 class AddTask extends StatefulWidget {
   const AddTask({super.key});
@@ -49,14 +50,7 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 
-  _getDateFromUser () async{
-    DateTime? _pickerDate = await showDatePicker(
-      context: context, 
-      initialDate: DateTime.now(), 
-      firstDate: DateTime(2015), 
-      lastDate: DateTime(2125)
-      );
-  }
+
 }
 
 class AddTaskInput extends StatelessWidget {

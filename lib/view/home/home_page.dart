@@ -2,11 +2,10 @@
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/constants/colors.dart';
-import 'package:flux_store/constants/colors.dart';
-import 'package:flux_store/constants/text_strings.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+import 'package:studdy/constants/colors.dart';
+import 'package:studdy/constants/text_strings.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,7 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime _selectDate = DateTime.now();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -219,7 +217,6 @@ class _HomePageState extends State<HomePage> {
                       onDateChange: (date) {
                         // New date selected
                         setState(() {
-                          _selectDate = date;
                         });
                       },
                     ),

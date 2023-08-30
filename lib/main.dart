@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/view/home/add_task.dart';
-import 'package:flux_store/view/home/home_page.dart';
 import 'package:get/get.dart';
+import 'package:studdy/view/home/add_task.dart';
 
 void main() {
    SystemChrome.setSystemUIOverlayStyle(

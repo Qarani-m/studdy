@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/constants/colors.dart';
+import 'package:studdy/constants/colors.dart';
 
 class TextFieldCustom extends StatelessWidget {
   TextFieldCustom(

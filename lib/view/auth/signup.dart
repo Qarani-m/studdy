@@ -3,13 +3,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/constants/colors.dart';
-import 'package:flux_store/view/auth/login.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/general.dart';
-import 'package:flux_store/view/widgets/text_field.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+
 import 'package:get/get.dart';
+import 'package:studdy/constants/colors.dart';
+import 'package:studdy/view/auth/login.dart';
+import 'package:studdy/view/widgets/button_widget.dart';
+import 'package:studdy/view/widgets/general.dart';
+import 'package:studdy/view/widgets/text_field.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});

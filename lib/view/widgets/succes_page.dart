@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+import 'package:studdy/view/widgets/button_widget.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({

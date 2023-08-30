@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/view/auth/new_emaipassword.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+
 import 'package:get/get.dart';
+import 'package:studdy/view/auth/new_emaipassword.dart';
+import 'package:studdy/view/widgets/button_widget.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 
 class ForgotPasswordOTPPage extends StatefulWidget {
   const ForgotPasswordOTPPage({super.key});

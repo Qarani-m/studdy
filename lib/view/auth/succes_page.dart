@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flux_store/view/widgets/succes_page.dart';
 import 'package:get/get.dart';
+import 'package:studdy/view/widgets/succes_page.dart';
 
 import 'login.dart';
 

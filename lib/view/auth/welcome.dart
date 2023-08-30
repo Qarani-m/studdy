@@ -4,12 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/view/auth/login.dart';
-import 'package:flux_store/view/auth/signup.dart';
-import 'package:flux_store/view/home/home_page.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
 import 'package:get/get.dart';
+import 'package:studdy/view/auth/login.dart';
+import 'package:studdy/view/auth/signup.dart';
+import 'package:studdy/view/home/home_page.dart';
+import 'package:studdy/view/widgets/button_widget.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 
 import '../../constants/colors.dart';
 

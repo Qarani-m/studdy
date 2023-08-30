@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flux_store/view/auth/otp_page.dart';
-import 'package:flux_store/view/widgets/button_widget.dart';
-import 'package:flux_store/view/widgets/text_field.dart';
-import 'package:flux_store/view/widgets/text_widget.dart';
+import 'package:studdy/view/auth/otp_page.dart';
+import 'package:studdy/view/widgets/button_widget.dart';
+import 'package:studdy/view/widgets/text_field.dart';
+import 'package:studdy/view/widgets/text_widget.dart';
 import 'package:get/get.dart';
 
 class ForgotPassword extends StatefulWidget {
