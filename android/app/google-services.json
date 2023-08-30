@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "361367615035",
+    "project_id": "studdy-27dea",
+    "storage_bucket": "studdy-27dea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361367615035:android:2f5fdc5ed9c238394d8e1e",
+        "android_client_info": {
+          "package_name": "com.example.dyanmic_theme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361367615035-4b6ejf2eab8e2qqdnn62ktdicfi5b0v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcNL5jcyrJSQWLZJpq6GeiXYu-UTZNDoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361367615035-4b6ejf2eab8e2qqdnn62ktdicfi5b0v4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "361367615035-d5udkj9rv4hkhdvjkter7aj0lu5809bu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dyanmicTheme.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:361367615035:android:c2c1bd82326d56d64d8e1e",
+        "android_client_info": {
+          "package_name": "com.example.studdy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "361367615035-4b6ejf2eab8e2qqdnn62ktdicfi5b0v4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcNL5jcyrJSQWLZJpq6GeiXYu-UTZNDoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "361367615035-4b6ejf2eab8e2qqdnn62ktdicfi5b0v4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "361367615035-d5udkj9rv4hkhdvjkter7aj0lu5809bu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.dyanmicTheme.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
