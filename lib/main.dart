@@ -1,15 +1,24 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:studdy/view/home/add_task.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:studdy/utils/themes/theme.dart';
+import 'package:studdy/views/auth/onboarding/welcome.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future main() async{
    SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark
     ),
+  );
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }
@@ -25,15 +34,13 @@ class MyApp extends StatelessWidget {
       builder: (context, child) =>  GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: "Poppins",
-        ),
+        theme: AppTheme.lightTheme,
         darkTheme: ThemeData(
           brightness: Brightness.dark
         ),
       
         themeMode: ThemeMode.light,
-        home: AddTask(),
+        home: WelcomePage(),
       ),
     );
   }
