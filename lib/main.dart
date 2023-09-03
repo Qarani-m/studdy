@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:studdy/utils/themes/theme.dart';
-import 'package:studdy/views/auth/onboarding/welcome.dart';
 import 'firebase_options.dart';
 
 Future main() async{
@@ -34,13 +32,12 @@ class MyApp extends StatelessWidget {
       builder: (context, child) =>  GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: AppTheme.lightTheme,
         darkTheme: ThemeData(
           brightness: Brightness.dark
         ),
       
         themeMode: ThemeMode.light,
-        home: WelcomePage(),
+        home: Placeholder(),
       ),
     );
   }
