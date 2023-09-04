@@ -5,7 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:studdy/src/features/authentication/screens/onboarding.dart';
 import 'firebase_options.dart';
+import 'src/utils/theme/themes.dart';
 
 Future main() async{
    SystemChrome.setSystemUIOverlayStyle(
@@ -29,16 +31,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      builder: (context, child) =>  GetMaterialApp(
+      builder: (context, child) {
+        return GetMaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        darkTheme: ThemeData(
-          brightness: Brightness.dark
-        ),
-      
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
-        home: Placeholder(),
-      ),
+        home:Onboarding(),
+      );
+      },
     );
   }
 }
+

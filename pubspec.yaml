@@ -46,6 +46,8 @@ dependencies:
   pinput: ^3.0.1
   popup_banner: ^1.0.0
   shared_preferences: ^2.2.1
+  liquid_swipe:
+  smooth_page_indicator:
 flutter_native_splash:
   color: "FFFFFF"
 
