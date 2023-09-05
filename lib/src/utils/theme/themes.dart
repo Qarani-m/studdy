@@ -60,7 +60,7 @@ fontFamily: 'Poppins',
 fontWeight: FontWeight.w400,
 height: 1.69,
 letterSpacing: 0.20,
-color:Colors.white.withOpacity(0.5)
+color:AppColors.blackTextColor.withOpacity(0.5)
 
       )
     ),

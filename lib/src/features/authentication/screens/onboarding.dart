@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
 import 'package:studdy/src/constants/text.dart';
 import 'package:studdy/src/features/authentication/models/onboarding_model.dart';
+import 'package:studdy/src/features/authentication/screens/welcome.dart';
 
 class Onboarding extends StatefulWidget {
   Onboarding({super.key});
@@ -73,6 +75,14 @@ class _OnboardingState extends State<Onboarding> {
             bottom: 60.h,
             child: OutlinedButton(
               onPressed: () {
+                if(controller.currentPage ==2){
+                  Get.to(
+                    Welcome(),
+                    transition: Transition.cupertinoDialog,
+                    duration: Duration(milliseconds: 400)
+                  );
+
+                }
                 int nextPage = controller.currentPage + 1;
                 controller.animateToPage(page: nextPage);
               },

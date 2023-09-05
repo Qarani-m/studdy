@@ -8,7 +8,7 @@ static const String onBoardingImage3 = "assets/images/auth/onboard3.svg";
 
 // -- Welcome Screen Images
 // -- also used in Login & SignUp
-static const String welcomeScreenImage = "assets/images/auth/welcome.png";
+static const String welcomeScreenImage = "assets/images/auth/welcome.svg";
 
 
 // -- Login & SignUp Images
