@@ -106,7 +106,7 @@ color:AppColors.blackTextColor.withOpacity(0.5)
     fontFamily: "Poppins",
     buttonTheme: ButtonThemeData(
       height: 56.h,
-      buttonColor: AppColors.cardBgColor
+      buttonColor: const Color.fromARGB(255, 220, 187, 24)
     ),
     iconTheme: const IconThemeData(
       color: AppColors.cardBgColor
@@ -139,24 +139,27 @@ fontFamily: 'Poppins',
 fontWeight: FontWeight.w400,
 height: 1.69,
 letterSpacing: 0.20,
-color:Colors.black.withOpacity(0.5)
+color:Colors.black.withOpacity(0.7)
 
       )
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.inputFillColor,
+      
+      
        border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
+
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(width: 0, color: AppColors.secondaryColor)),
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(width: 1.5, color: AppColors.secondaryColor)),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(width: 1.5, color: AppColors.secondaryColor)),
         errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4.r),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: const BorderSide(width: 1.5, color: AppColors.errorColor)),
 
       errorStyle: TextStyle(

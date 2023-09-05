@@ -12,9 +12,9 @@ static const String welcomeScreenImage = "assets/images/auth/welcome.svg";
 
 
 // -- Login & SignUp Images
-static const String googleLogoImage = "assets/logo/google.png";
+static const String googleLogoImage = "assets/images/auth/google.png";
 
 
 // -- Forget Password Images
-static const String forgetPasswordImage = "assets/images/auth/forgot_password.png";
+static const String forgetPasswordImage = "assets/images/auth/forgot_password.svg";
 }
