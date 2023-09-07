@@ -41,7 +41,7 @@ class TextField1 extends StatelessWidget {
             labelText: hint,
             hintText: label,
             prefixIcon: Icon(prefixIcon),
-            suffixIcon: obscureText? suffixIcon : null,
+            suffixIcon: obscureText? suffixIcon : hint=="Enter your password"?suffixIcon:null ,
             suffixIconColor: AppColors.fadedTextColor,
             prefixIconColor: AppColors.fadedTextColor),
       ),

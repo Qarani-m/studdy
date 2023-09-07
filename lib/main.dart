@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/authentication/screens/onboarding.dart';
 import 'package:studdy/src/repository/auth_repo/auth_repo.dart';
 import 'package:studdy/src/utils/controllers/controller_list.dart';
 import 'firebase_options.dart';
+import 'src/common_widgets/auth/logo.dart';
 import 'src/utils/theme/themes.dart';
 
 Future<void> main() async{
@@ -40,10 +42,25 @@ class MyApp extends StatelessWidget {
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
-        home:Onboarding(),
+        home:LogoScreen(),
       );
       },
     );
   }
 }
 
+class LogoScreen extends StatelessWidget {
+  const LogoScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: AppColors.primaryColor,
+        height: 812.h,
+        width: 375.w,
+        child: Logo(),
+      ),
+    );
+  }
+}

@@ -9,6 +9,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
 import 'package:studdy/src/constants/text.dart';
+import 'package:studdy/src/features/authentication/controllers/onboarding_controller.dart';
 import 'package:studdy/src/features/authentication/models/onboarding_model.dart';
 import 'package:studdy/src/features/authentication/screens/welcome.dart';
 
@@ -21,7 +22,7 @@ class Onboarding extends StatefulWidget {
 
 class _OnboardingState extends State<Onboarding> {
   final controller = LiquidController();
-
+  OnBoardingController onBoardingController = Get.put(OnBoardingController());
   int currentPage = 0;
 
   @override
@@ -75,13 +76,11 @@ class _OnboardingState extends State<Onboarding> {
             bottom: 60.h,
             child: OutlinedButton(
               onPressed: () {
-                if(controller.currentPage ==2){
-                  Get.to(
-                    Welcome(),
-                    transition: Transition.cupertinoDialog,
-                    duration: Duration(milliseconds: 400)
-                  );
-
+                if (controller.currentPage == 2) {
+                  Get.to(Welcome(),
+                      transition: Transition.cupertinoDialog,
+                      duration: Duration(milliseconds: 400));
+                  onBoardingController.isFirstTimer();
                 }
                 int nextPage = controller.currentPage + 1;
                 controller.animateToPage(page: nextPage);

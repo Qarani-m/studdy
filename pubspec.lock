@@ -246,22 +246,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
-  flutter_onboarding_slider:
-    dependency: "direct main"
-    description:
-      name: flutter_onboarding_slider
-      sha256: "09c060ced4b6b519709e5c7909f78a0d0a4107187130c4adc7414ceb83b81e6d"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.10"
-  flutter_screen_lock:
-    dependency: "direct main"
-    description:
-      name: flutter_screen_lock
-      sha256: "1d86191e67f8c2f09349c2d2929b6d019db213f012d577ad3b85935d22b13207"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.0.1"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -544,6 +528,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  shimmer:
+    dependency: "direct main"
+    description:
+      name: shimmer
+      sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

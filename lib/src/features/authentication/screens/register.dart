@@ -61,7 +61,7 @@ class _RegisterState extends State<Register> {
                         SizedBox(height: 20.h),
                         TextField1(
                             obscureText: false,
-                            controller: registerController.passwordController,
+                            controller: registerController.phoneController,
                             label: "Phone",
                             hint :"07XX XXX XXX",
                             prefixIcon: Icons.local_phone_outlined),
@@ -78,9 +78,7 @@ class _RegisterState extends State<Register> {
                               onTap: () {
                                 registerController.togglePasswordVisibility();
                               },
-                              child: Icon(registerController.obscureText.value
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                              child: Icon(registerController.obscureText.value? Icons.visibility: Icons.visibility_off),
                             ),
                           ),
                         ),

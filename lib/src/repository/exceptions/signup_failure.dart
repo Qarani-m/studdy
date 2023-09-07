@@ -1,7 +1,7 @@
 class SignUpFailure{
   final String message;
 
-  const SignUpFailure([this.message="An unknown error occures"]);
+  const SignUpFailure([this.message="An unknown error occured"]);
   factory SignUpFailure.code(String code){
     switch(code){
       case "weak-password": return const SignUpFailure("Please enter a stronger password "); 
