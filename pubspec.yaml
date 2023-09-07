@@ -37,16 +37,23 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_native_splash: ^2.3.2
-  flutter_onboarding_slider: ^1.0.10
-  flutter_screen_lock: ^9.0.1
   flutter_screenutil: ^5.9.0
+  flutter_svg: ^2.0.7
   get: ^4.6.5
   intl: ^0.18.1
   pinput: ^3.0.1
   popup_banner: ^1.0.0
-  flutter_svg: ^2.0.7
+  shared_preferences: ^2.2.1
+  liquid_swipe:
+  smooth_page_indicator:
+  shimmer: ^3.0.0
+  localstorage: ^4.0.0+1
+  calendar_date_picker2: ^0.5.3
+  sqflite:
+
 flutter_native_splash:
-  color: "FFFFFF"
+  color: "#dc143c"
+  image: assets/images/splash.png
 
 dev_dependencies:
   flutter_lints: ^2.0.0
