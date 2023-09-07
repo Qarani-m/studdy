@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/authentication/screens/onboarding.dart';
+import 'package:studdy/src/features/home/repository/db_helper.dart';
 import 'package:studdy/src/repository/auth_repo/auth_repo.dart';
 import 'package:studdy/src/utils/controllers/controller_list.dart';
 import 'firebase_options.dart';
@@ -24,6 +24,7 @@ Future<void> main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthRepo()));
+  await DbHelper.initDb();
   runApp(const MyApp());
 }
 
@@ -49,17 +50,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class LogoScreen extends StatelessWidget {
   const LogoScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         color: AppColors.primaryColor,
-        height: 812.h,
-        width: 375.w,
-        child: Logo(),
+        height:MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.height,
+        child: Center(child: Logo()),
       ),
     );
   }

@@ -47,6 +47,9 @@ dependencies:
   liquid_swipe:
   smooth_page_indicator:
   shimmer: ^3.0.0
+  localstorage: ^4.0.0+1
+  calendar_date_picker2: ^0.5.3
+  sqflite:
 
 flutter_native_splash:
   color: "#dc143c"

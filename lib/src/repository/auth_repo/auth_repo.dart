@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/authentication/screens/login.dart';
 import 'package:studdy/src/features/authentication/screens/onboarding.dart';
-import 'package:studdy/src/features/home/home_page.dart';
+import 'package:studdy/src/features/home/screens/home_page.dart';
 import 'package:studdy/src/repository/exceptions/login_failure.dart';
 import 'package:studdy/src/repository/exceptions/signup_failure.dart';
 
@@ -31,7 +31,7 @@ class AuthRepo extends GetxController {
         Get.offAll(
             transition: Transition.cupertinoDialog,
             duration: const Duration(milliseconds: 700),
-            const HomePage());
+             HomePage());
       });
     } else {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -60,7 +60,7 @@ class AuthRepo extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const HomePage())
+          ? Get.offAll(() =>  HomePage())
           : Get.to(const Login());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpFailure.code(e.code);
@@ -81,7 +81,7 @@ class AuthRepo extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const HomePage())
+          ? Get.offAll(() =>  HomePage())
           : Get.to(const Login());
     } on FirebaseAuthException {
       const ex = LoginFailure();
