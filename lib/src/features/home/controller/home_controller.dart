@@ -23,12 +23,15 @@ class HomeController extends GetxController{
 
   }
 
-
-
-
-
   void getfrom() async {
     taskList.assignAll(await DbHelper.getTasks());
+
+  }
+
+
+  void deleteTask(int id){
+    print(id);
+    DbHelper.deleteTask(id);
 
   }
   

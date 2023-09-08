@@ -62,21 +62,15 @@ static const String CREATE_TABLE = '''
   return await db!.query(tableName);
  }
 
-//  static Future<List<ScheduleModel>> getTasks() async {
-//   await initDb();
-//   print("Query called");
-//   List<Map<String, dynamic>> taskMaps = await db!.query(tableName);
-//   return taskMaps.map((data) => ScheduleModel.fromJson(data)).toList();
-// }
-
-
-
-
 static Future<List<ScheduleModel>> getTasks() async {
   await initDb();
   print("Query called");
   List<Map<String, dynamic>> taskMaps = await db!.query(tableName);
   return taskMaps.map((data) => ScheduleModel.fromJson(data)).toList();
+}
+
+static deleteTask(int id)async{
+   await db?.delete(tableName, where: "id=?",whereArgs: [id] );
 }
 
   

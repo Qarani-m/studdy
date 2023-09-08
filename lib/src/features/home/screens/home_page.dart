@@ -210,29 +210,24 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                   
-                  Container(
-                    height: 800.h,
-                    width: 327.w,
-                    // color:Colors.red,
-                    
-                    child: Obx(() {
-                    return ListView.builder(
-                      itemCount: controller.taskList.length,
+                  Obx(() {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: controller.taskList.length,
+                    itemBuilder: (_,index){
+                      print("---->${controller.taskList.length}");
+                    return GestureDetector(
+                      onTap:(){
+                        controller.deleteTask(controller.taskList[index].id!);
+                        controller.getfrom();
+                      },
+                      child: controller.taskList.length!=0?OneSchedule(model:controller.taskList[index]):Text("No tasks for today") ,
+                      
+                    );
+                  });
 
-                      itemBuilder: (_,index){
-                        print("---->${controller.taskList.length}");
-                      return OneSchedule(
-                        model:controller.taskList[index] ,
-                      );
-                    });
-
-                  })),
-                  GestureDetector(
-                    onTap:(){
-                      controller.getfrom();
-                    },
-                    child:Text("Click")
-                  )
+                  }),
+                 
                  
 
 
