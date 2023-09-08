@@ -62,10 +62,11 @@ static const String CREATE_TABLE = '''
   return await db!.query(tableName);
  }
 
-static Future<List<Task>> getTasks() async {
+static Future<List<Task>> getTasks(String date) async {
   await initDb();
   print("Query called");
-  List<Map<String, dynamic>> taskMaps = await db!.query(tableName);
+  print("Query called $date");
+  List<Map<String, dynamic>> taskMaps = await db!.query(tableName, orderBy: "id DESC", where: "date=?",whereArgs:[date]);
   return taskMaps.map((data) => Task.fromJson(data)).toList();
 }
 

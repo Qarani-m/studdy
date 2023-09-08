@@ -15,9 +15,9 @@ import 'package:studdy/src/features/home/repository/db_helper.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-   HomePage({super.key});
+  HomePage({super.key});
 
-  HomeController controller  = Get.put(HomeController());
+  HomeController controller = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
@@ -141,12 +141,14 @@ class HomePage extends StatelessWidget {
                         // color: Colors.amber,
                         height: 80.h,
                         width: 220.w,
-               
-                       child: Column(
+
+                        child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            SizedBox(height: 5.h,),
+                            SizedBox(
+                              height: 5.h,
+                            ),
                             HeadingText(
                               text: "September 19, 2021",
                               fontSize: 15.sp,
@@ -154,15 +156,13 @@ class HomePage extends StatelessWidget {
                               color:
                                   AppColors.primaryDarkColor.withOpacity(0.6),
                             ),
-                         
                           ],
                         ),
                       ),
                       GestureDetector(
                         onTap: () {
                           controller.addTask();
-                          
-                          },
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           height: 40.h,
@@ -206,39 +206,30 @@ class HomePage extends StatelessWidget {
                           color: Colors.grey),
                       onDateChange: (date) {
                         DateTime dateTime = DateTime.parse(date.toString());
-                        String formattedDate = DateFormat('MM/dd/yyyy').format(dateTime);
-
-                        print(formattedDate);
+                        String formattedDate =
+                            DateFormat('M/d/yyyy').format(dateTime);
+                        controller.selectedDate.value = formattedDate;
+                        controller.getfrom();
+                        // Output: 09/26/2023// Output: 09/26/2023
                       },
                     ),
                   ),
-                  
                   Obx(() {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: controller.taskList.length,
-                    itemBuilder: (_,index){
-                    return GestureDetector(
-                      onTap:(){
-                        // controller.deleteTask(controller.taskList[index].id!);
-                        // controller.getfrom();
-                        controller.showBottomShet(context, controller.taskList[index]);
-                      },
-                      child: controller.taskList.isNotEmpty?OneSchedule(model:controller.taskList[index]):const Text("No tasks for today") ,
-                      
-                    );
-                  });
-
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: controller.taskList.length,
+                        itemBuilder: (_, index) {
+                          return GestureDetector(
+                            onTap: () {
+                              controller.showBottomShet(
+                                  context, controller.taskList[index]);
+                            },
+                            child: controller.taskList.isNotEmpty
+                                ? OneSchedule(model: controller.taskList[index])
+                                : const Text("No tasks for today"),
+                          );
+                        });
                   }),
-                 
-                 
-
-
-                  
-
-                 
-
-               
                 ],
               ),
             )

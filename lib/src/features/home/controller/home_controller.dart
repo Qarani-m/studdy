@@ -3,7 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:studdy/src/common_widgets/auth/large_button.dart';
+import 'package:intl/intl.dart';
 import 'package:studdy/src/common_widgets/home/bottom_sheet_button.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/model/schedule_model.dart';
@@ -13,6 +13,13 @@ import 'package:studdy/src/features/home/screens/add_task.dart';
 class HomeController extends GetxController {
   RxList<Task> tasks = RxList<Task>();
   var taskList = <Task>[].obs;
+  RxString selectedDate = mainDate().obs;
+
+  static String mainDate() {
+    DateTime taskDate = DateTime.now();
+    String formattedDate = DateFormat('M/d/yyyy').format(taskDate);
+    return formattedDate; // Output: e.g., "9/8/23"
+  }
 
   void addTask() async {
     await Get.to(const AddTask(),
@@ -27,7 +34,8 @@ class HomeController extends GetxController {
   }
 
   void getfrom() async {
-    taskList.assignAll(await DbHelper.getTasks());
+    taskList.assignAll(await DbHelper.getTasks(selectedDate.value));
+    print(selectedDate.value);
   }
 
   void deleteTask(int id) {
@@ -68,14 +76,12 @@ class HomeController extends GetxController {
               children: [
                 task.isComplete == 0
                     ? BottomSheetButton(
-                        bottomSheetOnTap: (){
+                        bottomSheetOnTap: () {
                           DbHelper.updateCompleteStatus(task.id!);
                           getfrom();
                           showSnackBar("Task completed successfully");
-
                         },
                         backgroundColor: AppColors.accentColor,
-
                       )
                     : Container(),
                 BottomSheetButton(
@@ -83,7 +89,6 @@ class HomeController extends GetxController {
                     DbHelper.deleteTask(task.id!);
                     getfrom();
                     showSnackBar("Task Deleted successfully");
-                    
                   },
                   backgroundColor: AppColors.primaryColor,
                 ),
@@ -95,7 +100,6 @@ class HomeController extends GetxController {
       ),
     ));
   }
-
 
   showSnackBar(String text) {
     return Get.snackbar("Success", text,
@@ -109,11 +113,4 @@ class HomeController extends GetxController {
         colorText: Colors.white,
         duration: const Duration(seconds: 1));
   }
-
-
-
-
-
-
-
 }

@@ -154,7 +154,7 @@ class AddTaskController extends GetxController {
  RxList<Task> _tasks = RxList<Task>();
 
   void getfrom() async {
-    _tasks.assignAll(await DbHelper.getTasks());
+    _tasks.assignAll(await DbHelper.getTasks("09/26/2023"));
     print(_tasks);
   }
 
