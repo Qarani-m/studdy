@@ -10,7 +10,7 @@ class OneSchedule extends StatelessWidget {
     super.key,
     required this.model
   });
-  final  ScheduleModel model;
+  final  Task model;
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +86,8 @@ class OneSchedule extends StatelessWidget {
                       height: 90.h,
                       width: 1.w,
                     ),
-                    const RotatedBox(
-                        quarterTurns: 3, child: NormalText(text: "Todo"))
+                     RotatedBox(
+                        quarterTurns: 3, child: NormalText(text: model.isComplete ==0?"Todo":"Completed"))
                   ],
                 ),
               ),

@@ -92,7 +92,7 @@ class AddTaskController extends GetxController {
     if (status == "0") {
       print("object");
       //save to db
-      ScheduleModel task = ScheduleModel(
+      Task task = Task(
           date: date,
           title: title,
           note: note,
@@ -114,7 +114,7 @@ class AddTaskController extends GetxController {
           ),
           backgroundColor: AppColors.primaryDarkColor,
           colorText: Colors.white,
-          duration: const Duration(seconds: 10));
+          duration: const Duration(seconds: 1));
     } else {
       Get.snackbar("Requried", status,
           snackPosition: SnackPosition.BOTTOM,
@@ -151,16 +151,16 @@ class AddTaskController extends GetxController {
 
     return message;
   }
- RxList<ScheduleModel> _tasks = RxList<ScheduleModel>();
+ RxList<Task> _tasks = RxList<Task>();
 
   void getfrom() async {
-    _tasks.assignAll(await DbHelper.getTasks());
+    _tasks.assignAll(await DbHelper.getTasks("09/26/2023"));
     print(_tasks);
   }
 
 //   void getTasks() async {
 //     List<Map<String, dynamic>> tasks = await DbHelper.query();
-// tasks.assignAll(tasks.map((data) => new ScheduleModel.fromJson(data))).toList();
+// tasks.assignAll(tasks.map((data) => new Task.fromJson(data))).toList();
   
 //   }
 }
