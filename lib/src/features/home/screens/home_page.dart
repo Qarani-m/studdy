@@ -2,6 +2,7 @@ import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:studdy/src/common_widgets/home/heading_text.dart';
 import 'package:studdy/src/common_widgets/home/schedule.dart';
 import 'package:studdy/src/common_widgets/home/stats_tab.dart';
@@ -194,7 +195,6 @@ class HomePage extends StatelessWidget {
                       monthTextStyle: const TextStyle(
                         color: AppColors.primaryDarkColor,
                         fontWeight: FontWeight.w600,
-                        
                       ),
                       dayTextStyle: TextStyle(
                           color: AppColors.primaryDarkColor,
@@ -205,7 +205,10 @@ class HomePage extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           color: Colors.grey),
                       onDateChange: (date) {
-                       
+                        DateTime dateTime = DateTime.parse(date.toString());
+                        String formattedDate = DateFormat('MM/dd/yyyy').format(dateTime);
+
+                        print(formattedDate);
                       },
                     ),
                   ),
@@ -215,13 +218,13 @@ class HomePage extends StatelessWidget {
                     shrinkWrap: true,
                     itemCount: controller.taskList.length,
                     itemBuilder: (_,index){
-                      print("---->${controller.taskList.length}");
                     return GestureDetector(
                       onTap:(){
-                        controller.deleteTask(controller.taskList[index].id!);
-                        controller.getfrom();
+                        // controller.deleteTask(controller.taskList[index].id!);
+                        // controller.getfrom();
+                        controller.showBottomShet(context, controller.taskList[index]);
                       },
-                      child: controller.taskList.length!=0?OneSchedule(model:controller.taskList[index]):Text("No tasks for today") ,
+                      child: controller.taskList.isNotEmpty?OneSchedule(model:controller.taskList[index]):const Text("No tasks for today") ,
                       
                     );
                   });

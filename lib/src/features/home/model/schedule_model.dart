@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ScheduleModel {
+class Task {
   String? title;
   String? note;
   String? start;
@@ -10,7 +10,7 @@ class ScheduleModel {
   int? id;
   int? isComplete;
 
-  ScheduleModel({
+  Task({
     this.date,
     this.id,
     this.title,
@@ -24,9 +24,9 @@ class ScheduleModel {
 
    @override
   String toString() {
-    return 'ScheduleModel{id: $id, date: $date, title: $title, note: $note, start: $start, end: $end, bgColor: $bgColor, isComplete: $isComplete}';
+    return 'Task{id: $id, date: $date, title: $title, note: $note, start: $start, end: $end, bgColor: $bgColor, isComplete: $isComplete}';
   }
-  ScheduleModel.fromJson(Map<String ,dynamic>json){
+  Task.fromJson(Map<String ,dynamic>json){
      id= json["id"];
     title = json["title"];
      note= json["note"];
