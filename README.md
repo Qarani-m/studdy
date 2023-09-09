@@ -32,3 +32,11 @@ Follow these steps to set up the project and start development:
    ```bash
    git clone https://github.com/qarani-m/studdy.git
    cd studdy-app
+
+## Screenshots
+
+![studdy](screenshots/0.png)
+![studdy](screenshots/1.png)
+![studdy](screenshots/2.png)
+![studdy](screenshots/3.png)
+![studdy](screenshots/5.png)
