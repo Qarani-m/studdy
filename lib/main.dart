@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/repository/db_helper.dart';
+import 'package:studdy/src/features/home/repository/user_dbhelper.dart';
 import 'package:studdy/src/repository/auth_repo/auth_repo.dart';
 import 'package:studdy/src/utils/controllers/controller_list.dart';
 import 'firebase_options.dart';
@@ -25,6 +26,8 @@ Future<void> main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((value) => Get.put(AuthRepo()));
   await DbHelper.initDb();
+  await UserDbHelper.initDb();
+  
   runApp(const MyApp());
 }
 

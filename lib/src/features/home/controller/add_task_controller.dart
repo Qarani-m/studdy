@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -9,17 +7,10 @@ import 'package:studdy/src/features/home/repository/db_helper.dart';
 import 'package:studdy/src/features/home/screens/home_page.dart';
 
 class AddTaskController extends GetxController {
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
   void goHome() {
-    Get.off(
-      HomePage(),
-      transition: Transition.cupertinoDialog,
-      duration: const Duration(milliseconds: 400)
-    );
+    Get.off(HomePage(),
+        transition: Transition.cupertinoDialog,
+        duration: const Duration(milliseconds: 400));
   }
 
   TextEditingController titleController = TextEditingController();
@@ -90,7 +81,6 @@ class AddTaskController extends GetxController {
     String status = validator(title, note, startTime.value, stopTime.value);
 
     if (status == "0") {
-      print("object");
       //save to db
       Task task = Task(
           date: date,
@@ -101,9 +91,7 @@ class AddTaskController extends GetxController {
           bgColor: selectedColor.value,
           isComplete: 0);
 
-      int dbResponse = await DbHelper.insert(task);
-      print("===================================$dbResponse");
-
+      await DbHelper.insert(task);
       //show snackbar
       Get.snackbar("Succes", "Task added successfully",
           snackPosition: SnackPosition.BOTTOM,
@@ -127,6 +115,7 @@ class AddTaskController extends GetxController {
           duration: const Duration(seconds: 10));
       return;
     }
+    createNotification(startTime.value);
   }
 
   String validator(
@@ -138,7 +127,6 @@ class AddTaskController extends GetxController {
       if (stopTimeParts[0] < startTimeParts[0] ||
           (stopTimeParts[0] == startTimeParts[0] &&
               stopTimeParts[1] <= startTimeParts[1])) {
-        // stopTime is not greater than startTime
         message = "stop time must be greater than start time";
       } else {
         message = "0";
@@ -151,16 +139,35 @@ class AddTaskController extends GetxController {
 
     return message;
   }
- RxList<Task> _tasks = RxList<Task>();
+
+  RxList<Task> _tasks = RxList<Task>();
 
   void getfrom() async {
     _tasks.assignAll(await DbHelper.getTasks("09/26/2023"));
     print(_tasks);
   }
 
-//   void getTasks() async {
-//     List<Map<String, dynamic>> tasks = await DbHelper.query();
-// tasks.assignAll(tasks.map((data) => new Task.fromJson(data))).toList();
-  
-//   }
+
+
+
+
+
+
+
+
+
+
+void createNotification(String time){
+  print(time);
+
+}
+
+
+
+
+
+
+
+
+
 }

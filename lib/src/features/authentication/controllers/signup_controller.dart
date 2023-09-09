@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/features/authentication/screens/login.dart';
+import 'package:studdy/src/features/home/controller/home_controller.dart';
+import 'package:studdy/src/features/home/model/student_model.dart';
+import 'package:studdy/src/features/home/repository/user_dbhelper.dart';
 import 'package:studdy/src/repository/auth_repo/auth_repo.dart';
 
 class RegisterController extends GetxController {
@@ -28,9 +31,20 @@ class RegisterController extends GetxController {
         duration: const Duration(milliseconds: 400));
   }
 
-  void signupAction() {
+  void signupAction() async{
     email = emailController.text;
     password = passwordController.text;
-    AuthRepo.instance.createUser(email, password);
+    name = nameController.text;
+    phone= phoneController.text;
+    isAuthenticating.value=true;
+    await AuthRepo.instance.createUser(email, password,name, phone);
+    // put user in database
+    
+      // await UserDbHelper.insert(student);
+      // homeController.getUser();
+      
+
+
+
   }
 }
