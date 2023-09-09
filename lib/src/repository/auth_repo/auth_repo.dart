@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/authentication/screens/login.dart';
 import 'package:studdy/src/features/authentication/screens/onboarding.dart';
+import 'package:studdy/src/features/home/controller/home_controller.dart';
+import 'package:studdy/src/features/home/model/student_model.dart';
+import 'package:studdy/src/features/home/repository/user_dbhelper.dart';
 import 'package:studdy/src/features/home/screens/home_page.dart';
 import 'package:studdy/src/repository/exceptions/login_failure.dart';
 import 'package:studdy/src/repository/exceptions/signup_failure.dart';
@@ -54,14 +60,43 @@ class AuthRepo extends GetxController {
       }
     }
   }
+  Future<void> saveDateToFireStore(String email,String name, String phone)async{
 
-  Future<void> createUser(String email, String password) async {
+    CollectionReference users = FirebaseFirestore.instance.collection('Users');
+    return users
+          .add({
+            'name': name, // John Doe
+            'email': email, // Stokes and Sons
+            'phone': phone,
+          })
+          .then((value) => print("User Added"))
+          .catchError((error) => print("Failed to add user: $error"));
+
+  }
+
+  Future<void> createUser(String email, String password,String name, String phone) async {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      firebaseUser.value != null
-          ? Get.offAll(() =>  HomePage())
-          : Get.to(const Login());
+      if (firebaseUser.value != null) {
+        await saveDateToFireStore(email, name,phone);
+        HomeController homeController = Get.put(HomeController());
+        Student student = Student(
+          name:name,
+          email:email,
+          phone: phone,
+          school: "",
+          studentId: "",
+          dob:"",
+          form:"",
+        );
+        await UserDbHelper.insert(student);
+        await homeController.getUser();
+        // show loading widget
+        Get.offAll(() => HomePage());
+      } else {
+        Get.to(const Login());
+      }
     } on FirebaseAuthException catch (e) {
       final ex = SignUpFailure.code(e.code);
       Get.showSnackbar(

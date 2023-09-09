@@ -1,16 +1,105 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:studdy/src/common_widgets/home/bottom_sheet_button.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/model/schedule_model.dart';
+import 'package:studdy/src/features/home/model/student_model.dart';
 import 'package:studdy/src/features/home/repository/db_helper.dart';
+import 'package:studdy/src/features/home/repository/user_dbhelper.dart';
 import 'package:studdy/src/features/home/screens/add_task.dart';
 
 class HomeController extends GetxController {
+  RxBool isDoneInitializing  = false.obs;
+
+
+  var userList = <Student>[].obs;
+
+ Future<void> getUser() async {
+    userList.assignAll(await UserDbHelper.getUser());
+    isDoneInitializing.value =true;
+  }
+
+  @override
+  void onInit(){
+    super.onInit();
+    getUser();
+  } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   RxList<Task> tasks = RxList<Task>();
   var taskList = <Task>[].obs;
   RxString selectedDate = mainDate().obs;
@@ -35,7 +124,6 @@ class HomeController extends GetxController {
 
   void getfrom() async {
     taskList.assignAll(await DbHelper.getTasks(selectedDate.value));
-    print(selectedDate.value);
   }
 
   void deleteTask(int id) {

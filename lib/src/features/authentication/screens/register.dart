@@ -9,6 +9,7 @@ import 'package:studdy/src/common_widgets/auth/text_field.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
 import 'package:studdy/src/features/authentication/controllers/signup_controller.dart';
+import 'package:studdy/src/features/home/controller/home_controller.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -20,7 +21,8 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    RegisterController registerController = Get.find();
+    RegisterController registerController = Get.put(RegisterController());
+    HomeController homeController = Get.put(HomeController());
 
     return Scaffold(
       body: SafeArea(
@@ -87,6 +89,7 @@ class _RegisterState extends State<Register> {
                         GestureDetector(
                           onTap: () {
                             registerController.signupAction();
+                            homeController.getUser();
                           },
                           child: const WelcomeButton(
                             text: "REGISTER",
