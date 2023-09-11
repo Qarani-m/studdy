@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:studdy/src/common_widgets/auth/large_button.dart';
 import 'package:studdy/src/common_widgets/auth/text_field.dart';
 import 'package:studdy/src/constants/image_strings.dart';
-import 'package:studdy/src/features/authentication/controllers/forgot_password.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
@@ -13,7 +11,8 @@ class ForgotPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ForgotPasswordController controller = Get.find();
-    ForgotPasswordController controller = Get.put(ForgotPasswordController());
+    TextEditingController controller = TextEditingController();
+
     return Scaffold(
       body: Padding(
         padding:  EdgeInsets.only(left:23.w, right:23,top:150),
@@ -43,7 +42,7 @@ class ForgotPassword extends StatelessWidget {
             ),
             TextField1(
                               obscureText: false,
-                              controller: controller.emailController,
+                              controller: controller,
                               label: "Email",
                               hint:"studdy@example.com",
 
@@ -51,14 +50,9 @@ class ForgotPassword extends StatelessWidget {
           SizedBox(
               height: 20.h,
             ),
-            GestureDetector(
-              onTap: () {
-                controller.goToOtp();
-              },
-              child: const WelcomeButton(
-                text: "send code",
-                background: true,
-              ),
+            const WelcomeButton(
+              text: "send code",
+              background: true,
             )
 
           ],

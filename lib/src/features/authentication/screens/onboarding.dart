@@ -21,9 +21,7 @@ class Onboarding extends StatefulWidget {
 }
 
 class _OnboardingState extends State<Onboarding> {
-  final controller = LiquidController();
-  OnBoardingController onBoardingController = Get.put(OnBoardingController());
-  int currentPage = 0;
+  OnBoardingController controller =Get.put(OnBoardingController());
 
   @override
   Widget build(BuildContext context) {
@@ -62,29 +60,18 @@ class _OnboardingState extends State<Onboarding> {
         alignment: Alignment.center,
         children: [
           LiquidSwipe(
-            liquidController: controller,
+            liquidController: controller.liquidController,
             enableSideReveal: true,
             slideIconWidget: Icon(Icons.arrow_back_ios),
             pages: pages,
             onPageChangeCallback: (int activeIndex) {
-              setState(() {
-                currentPage = activeIndex;
-              });
+              
             },
           ),
           Positioned(
             bottom: 60.h,
             child: OutlinedButton(
-              onPressed: () {
-                if (controller.currentPage == 2) {
-                  Get.to(Welcome(),
-                      transition: Transition.cupertinoDialog,
-                      duration: Duration(milliseconds: 400));
-                  onBoardingController.isFirstTimer();
-                }
-                int nextPage = controller.currentPage + 1;
-                controller.animateToPage(page: nextPage);
-              },
+              onPressed: () {controller.nextButtonPresses();},
               style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.white,
                   side: BorderSide(color: Colors.black26),
@@ -103,9 +90,7 @@ class _OnboardingState extends State<Onboarding> {
               top: 50.h,
               right: 23.w,
               child: TextButton(
-                  onPressed: () {
-                    controller.jumpToPage(page: 2);
-                  },
+                  onPressed: () {controller.skipButtonPressed();},
                   child: Text(
                     "Skip",
                     style: TextStyle(color: AppColors.fadedTextColor),
@@ -113,7 +98,7 @@ class _OnboardingState extends State<Onboarding> {
           Positioned(
             bottom: 20.h,
             child: AnimatedSmoothIndicator(
-              activeIndex: controller.currentPage,
+              activeIndex: controller.liquidController.currentPage,
               count: 3,
               effect: WormEffect(
                   dotHeight: 5.0.h,

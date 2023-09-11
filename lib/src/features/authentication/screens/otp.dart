@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import 'package:studdy/src/common_widgets/auth/large_button.dart';
 import 'package:studdy/src/common_widgets/auth/signup_login.dart';
-import 'package:studdy/src/features/authentication/controllers/forgot_password.dart';
 
 class ForgotPasswordOTPPage extends StatefulWidget {
   const ForgotPasswordOTPPage({super.key});
@@ -19,7 +18,6 @@ class ForgotPasswordOTPPage extends StatefulWidget {
 class _ForgotPasswordOTPPageState extends State<ForgotPasswordOTPPage> {
   @override
   Widget build(BuildContext context) {
-    ForgotPasswordController controller = Get.find();
 
     return Scaffold(
       body: Padding(
@@ -62,9 +60,7 @@ class _ForgotPasswordOTPPageState extends State<ForgotPasswordOTPPage> {
                   height: 30.h,
                 ),
                 GestureDetector(
-              onTap: () {
-                controller.goToOtp();
-              },
+              onTap: () {},
               child: const WelcomeButton(
                 text: "Verify",
                 background: true,

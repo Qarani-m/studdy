@@ -8,8 +8,6 @@ import 'package:studdy/src/common_widgets/auth/signup_with_google.dart';
 import 'package:studdy/src/common_widgets/auth/text_field.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
-import 'package:studdy/src/features/authentication/controllers/signup_controller.dart';
-import 'package:studdy/src/features/home/controller/home_controller.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -21,8 +19,7 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    RegisterController registerController = Get.put(RegisterController());
-    HomeController homeController = Get.put(HomeController());
+    TextEditingController registerController = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -49,48 +46,41 @@ class _RegisterState extends State<Register> {
                       children: [
                         TextField1(
                             obscureText: false,
-                            controller: registerController.nameController,
+                            controller: registerController,
                             label: "Name",
                             hint: "Enter your name",
                             prefixIcon: Icons.person_2_outlined),
                         SizedBox(height: 20.h),
                         TextField1(
                             obscureText: false,
-                            controller: registerController.emailController,
+                            controller: registerController,
                             label: "Email",
                             hint:"studdy@example.com",
                             prefixIcon: Icons.alternate_email_sharp),
                         SizedBox(height: 20.h),
                         TextField1(
                             obscureText: false,
-                            controller: registerController.phoneController,
+                            controller: registerController,
                             label: "Phone",
                             hint :"07XX XXX XXX",
                             prefixIcon: Icons.local_phone_outlined),
                         SizedBox(height: 20.h),
                         
-                        Obx(
-                          () => TextField1(
-                            obscureText: registerController.obscureText.value,
-                            controller: registerController.passwordController,
+                        TextField1(
+                            obscureText: false,
+                            controller: registerController,
                             label: "Password",
                             hint: "Enter your password",
                             prefixIcon: Icons.fingerprint,
                             suffixIcon: GestureDetector(
-                              onTap: () {
-                                registerController.togglePasswordVisibility();
-                              },
-                              child: Icon(registerController.obscureText.value? Icons.visibility: Icons.visibility_off),
+                              onTap: () {},
+                              child: const Icon(1==1? Icons.visibility: Icons.visibility_off),
                             ),
                           ),
-                        ),
                         SizedBox(height: 15.h),
                         
                         GestureDetector(
-                          onTap: () {
-                            registerController.signupAction();
-                            homeController.getUser();
-                          },
+                          onTap: () {},
                           child: const WelcomeButton(
                             text: "REGISTER",
                             background: true,
@@ -113,7 +103,7 @@ class _RegisterState extends State<Register> {
                           height: 20.h,
                         ),
                         GestureDetector(
-                          onTap: (){registerController.goToLoginPage();},
+                          onTap: (){},
                           
                           child: Padding(
                             padding:  EdgeInsets.only(bottom: 8.h),
@@ -123,14 +113,7 @@ class _RegisterState extends State<Register> {
                             ),
                           ),
                         ),
-                        Obx(
-                          () => registerController.isAuthenticating.value
-                              ? const CircularProgressIndicator(
-                                backgroundColor: AppColors.primaryColor,
-                                color: AppColors.whiteColor,
-                              ) // Show progress indicator when authenticating
-                              : Container(), // Hide it when not authenticating
-                        ),
+                        
                       ],
                     ))
               ],

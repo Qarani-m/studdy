@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
 import 'package:studdy/src/common_widgets/auth/large_button.dart';
 import 'package:studdy/src/common_widgets/auth/signup_login.dart';
 import 'package:studdy/src/common_widgets/auth/signup_with_google.dart';
 import 'package:studdy/src/common_widgets/auth/text_field.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
-import 'package:studdy/src/features/authentication/controllers/login_controller.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -20,7 +18,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
-    LoginController controller = Get.find();
+    TextEditingController controller = TextEditingController();
 
     return Scaffold(
       body: SafeArea(
@@ -49,36 +47,30 @@ class _LoginState extends State<Login> {
                       children: [
                         TextField1(
                             obscureText: false,
-                            controller: controller.emailController,
+                            controller: controller,
                             label: "Email",
                             hint:"studdy@example.com",
 
                             prefixIcon: Icons.alternate_email_sharp),
                         SizedBox(height: 20.h),
-                        Obx(
-                          () => TextField1(
-                            obscureText: controller.obscureText.value,
-                            controller: controller.passwordController,
+                        TextField1(
+                            obscureText: true,
+                            controller: controller,
                             label: "Password",
                             hint: "Enter your password",
 
                             prefixIcon: Icons.fingerprint,
                             suffixIcon: GestureDetector(
-                              onTap: () {
-                                controller.togglePasswordVisibility();
-                              },
-                              child: Icon(controller.obscureText.value
-                                  ? Icons.visibility
-                                  : Icons.visibility_off),
+                              onTap: () {},
+                              child: const Icon(1==1? Icons.visibility: Icons.visibility_off),
                             ),
                           ),
-                        ),
                         SizedBox(height: 15.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             GestureDetector(
-                              onTap: () {controller.goToForgotPassword();},
+                              onTap: () {},
                               child: Text(
                                 "Forgot password?",
                                 style: Theme.of(context)
@@ -93,9 +85,7 @@ class _LoginState extends State<Login> {
                         ),
                         SizedBox(height: 15.h),
                         GestureDetector(
-                          onTap: () {
-                            controller.loginAction();
-                          },
+                          onTap: () {},
                           child: const WelcomeButton(
                             text: "LOGIN",
                             background: true,
@@ -118,20 +108,13 @@ class _LoginState extends State<Login> {
                           height: 20.h,
                         ),
                         GestureDetector(
-                          onTap:(){controller.goToRegisterPage();},
+                          onTap:(){},
                           child:const  Padding(
                             padding: EdgeInsets.only(bottom: 8.0),
                             child:SignupLogin(text1:"Don't have an account? ",text2:"Register"),
                           ),
                         ),
-                        Obx(
-                          () => controller.isAuthenticating.value
-                              ? const CircularProgressIndicator(
-                                backgroundColor: AppColors.primaryColor,
-                                color: AppColors.whiteColor,
-                              ) // Show progress indicator when authenticating
-                              : Container(), // Hide it when not authenticating
-                        ),
+                      
                       ],
                     ))
               ],
