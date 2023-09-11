@@ -8,7 +8,7 @@ The Kenyan education system has recently transitioned to the Competency-Based Cu
 
 ## Assumptions
 
-The development timeline for this project is estimated to be reasonable, with the assumption that the team has a clear understanding of the requirements and a well-defined plan in place.
+The development timeline for this project will be reasonable, with the assumption that the team (its a solo project🙃...its not ideal but its what i've got) has a clear understanding of the requirements and a well-defined plan in place.(i just have the end goal of what the app should look, feel and function like... again not ideal but...)
 
 ## Prerequisites
 
