@@ -6,7 +6,6 @@ class OnBoardingController extends GetxController {
   LiquidController liquidController = LiquidController();
 
   void nextButtonPresses() {
-    print(liquidController.currentPage);
     if (liquidController.currentPage == 2) {
       Get.to(const Welcome(),
           transition: Transition.cupertinoDialog,

@@ -39,4 +39,10 @@ Follow these steps to set up the project and start development:
 ![studdy](screenshots/1.png)
 ![studdy](screenshots/2.png)
 ![studdy](screenshots/3.png)
-![studdy](screenshots/5.png)![studdy](screenshots/0.png)
+
+
+## Auth Flow of events
+Couldn't draw any other UML diagram, so.....🙃
+![studdy](screenshots/studdy-auth-sequence..png)
+
+

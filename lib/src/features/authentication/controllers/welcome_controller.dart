@@ -6,7 +6,8 @@ class WelcomeController extends GetxController{
     Get.to(
           nextPage,
           transition: Transition.cupertinoDialog,
-          duration: const Duration(milliseconds: 400)
+          duration: const Duration(milliseconds: 400),
+          
         );
 
   }
