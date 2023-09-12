@@ -50,6 +50,7 @@ dependencies:
   sqflite:
   lottie: ^2.6.0
   shared_preferences:
+  loading_animation_widget: ^1.2.0+4
 flutter_native_splash:
   color: "#dc143c"
   image: assets/images/splash.png

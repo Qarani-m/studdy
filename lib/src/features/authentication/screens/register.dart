@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:studdy/src/common_widgets/auth/large_button.dart';
 import 'package:studdy/src/common_widgets/auth/signup_login.dart';
 import 'package:studdy/src/common_widgets/auth/signup_with_google.dart';
 import 'package:studdy/src/common_widgets/auth/text_field.dart';
+import 'package:studdy/src/common_widgets/loader.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
+import 'package:studdy/src/features/authentication/controllers/register_controller.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -17,10 +20,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  RegisterController controller  = Get.put(RegisterController());
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController registerController = TextEditingController();
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -30,7 +33,7 @@ class _RegisterState extends State<Register> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: 200.h,
+                  height: 170.h,
                   width: 200.w,
                   child: SvgPicture.asset(AppImages.welcomeScreenImage),
                 ),
@@ -46,41 +49,41 @@ class _RegisterState extends State<Register> {
                       children: [
                         TextField1(
                             obscureText: false,
-                            controller: registerController,
+                            controller: controller.nameController,
                             label: "Name",
                             hint: "Enter your name",
                             prefixIcon: Icons.person_2_outlined),
                         SizedBox(height: 20.h),
                         TextField1(
                             obscureText: false,
-                            controller: registerController,
+                            controller: controller.emailController,
                             label: "Email",
                             hint:"studdy@example.com",
                             prefixIcon: Icons.alternate_email_sharp),
                         SizedBox(height: 20.h),
                         TextField1(
                             obscureText: false,
-                            controller: registerController,
+                            controller: controller.phoneController,
                             label: "Phone",
                             hint :"07XX XXX XXX",
                             prefixIcon: Icons.local_phone_outlined),
                         SizedBox(height: 20.h),
                         
-                        TextField1(
-                            obscureText: false,
-                            controller: registerController,
-                            label: "Password",
-                            hint: "Enter your password",
-                            prefixIcon: Icons.fingerprint,
-                            suffixIcon: GestureDetector(
-                              onTap: () {},
-                              child: const Icon(1==1? Icons.visibility: Icons.visibility_off),
+                        Obx(()=>TextField1(
+                              obscureText: controller.passwordVisible.value,
+                              controller: controller.passwordController,
+                              label: "Password",
+                              hint: "Enter your password",
+                              prefixIcon: Icons.fingerprint,
+                              suffixIcon: GestureDetector(
+                                onTap: () {controller.togglePasswordVisibility();},
+                                child: Icon(controller.passwordVisible.value? Icons.visibility: Icons.visibility_off),
+                              ),
                             ),
-                          ),
+                        ),
                         SizedBox(height: 15.h),
-                        
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {controller.registerAction();},
                           child: const WelcomeButton(
                             text: "REGISTER",
                             background: true,
@@ -103,7 +106,9 @@ class _RegisterState extends State<Register> {
                           height: 20.h,
                         ),
                         GestureDetector(
-                          onTap: (){},
+                          onTap: (){
+                            controller.goLogin();
+                          },
                           
                           child: Padding(
                             padding:  EdgeInsets.only(bottom: 8.h),
@@ -112,6 +117,11 @@ class _RegisterState extends State<Register> {
                               text2:"Login"
                             ),
                           ),
+                        ),
+                        Obx(
+                          () => controller.isAuthenticating.value
+                              ? const Loader() // Show progress indicator when authenticating
+                              : Container(), // Hide it when not authenticating
                         ),
                         
                       ],

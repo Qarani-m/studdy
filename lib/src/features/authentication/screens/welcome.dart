@@ -97,6 +97,7 @@ class WelcomeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
+        controller.goToNextPage(nextPage);
         
       },
       child: Container(

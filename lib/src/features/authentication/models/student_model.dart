@@ -1,12 +1,17 @@
+import 'dart:convert';
+
+import 'package:studdy/src/features/home/model/courses_model.dart';
+
 class Student {
   int? id;
   String? name;
   String? email;
   String? phone;
   String? school;
+  String? courses;
   String? studentId;
+  String? level;
   String? dob;
-  String? form;
 
   Student({
     this.id,
@@ -14,12 +19,15 @@ class Student {
     this.email,
     this.phone,
     this.school,
+    this.courses,
     this.studentId,
+    this.level,
     this.dob,
-    this.form,
   });
 
   factory Student.fromJson(Map<String, dynamic> json) {
+
+
     return Student(
       id: json['id'] as int?,
       name: json['name'] as String?,
@@ -28,7 +36,8 @@ class Student {
       school: json['school'] as String?,
       studentId: json['studentid'] as String?,
       dob: json['dob'] as String?,
-      form: json['form'] as String?,
+      level: json['level'] as String?,
+      courses: json['courses'] as String?,
     );
   }
 
@@ -41,7 +50,8 @@ class Student {
     data['school'] = school;
     data['studentid'] = studentId;
     data['dob'] = dob;
-    data['form'] = form;
+    data['level'] = level;
+    data['courses']=courses;
     return data;
   }
 }

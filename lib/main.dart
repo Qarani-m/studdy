@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/authentication/repository/auth_helper.dart';
+import 'package:studdy/src/features/authentication/repository/user_dbhelper.dart';
 import 'firebase_options.dart';
 import 'src/common_widgets/auth/logo.dart';
 import 'src/utils/theme/themes.dart';
@@ -24,8 +25,8 @@ Future<void> main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ) .then((value) => Get.put(AuthHelper()));
-  // await DbHelper.initDb();
   // await UserDbHelper.initDb();
+  await UserDbHelper.initDb();
 
 FlutterNativeSplash.remove();
   runApp(const MyApp());
