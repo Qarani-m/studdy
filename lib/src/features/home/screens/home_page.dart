@@ -1,279 +1,212 @@
-import 'package:date_picker_timeline/date_picker_timeline.dart';
+// ignore_for_file: prefer_const_constructors
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:studdy/src/common_widgets/home/heading_text.dart';
-import 'package:studdy/src/common_widgets/home/lottie_animation.dart';
-import 'package:studdy/src/common_widgets/home/schedule.dart';
-import 'package:studdy/src/common_widgets/home/stats_tab.dart';
-import 'package:studdy/src/common_widgets/home/sub_menu.dart';
+import 'package:studdy/src/common_widgets/home/category_tuturo.dart';
+import 'package:studdy/src/common_widgets/home/course_slider.dart';
+import 'package:studdy/src/common_widgets/home/right_left.dart';
+import 'package:studdy/src/common_widgets/home/top_bar.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/constants/text.dart';
-import 'package:studdy/src/features/home/controller/home_controller.dart';
+import 'package:studdy/src/features/authentication/repository/auth_helper.dart';
+import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
 
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
-import '../../../repository/auth_repo/auth_repo.dart';
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
-// ignore: must_be_immutable
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  HomeController controller = Get.put(HomeController());
+class _HomePageState extends State<HomePage> {
+  HomeControllerMain mainController = Get.put(HomeControllerMain());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0,
-        currentIndex: 0,
-        items: const [
-          // ignore: prefer_const_constructors
-          BottomNavigationBarItem(
-              icon: Image(image: AssetImage("assets/images/home/apps.png")),
-              label: "HOME"),
-          BottomNavigationBarItem(
-              icon: Image(image: AssetImage("assets/images/home/calendar.png")),
-              label: "HOME"),
-          BottomNavigationBarItem(
-              icon: Image(image: AssetImage("assets/images/home/comment.png")),
-              label: "HOME"),
-          BottomNavigationBarItem(
-              icon: Image(image: AssetImage("assets/images/home/user.png")),
-              label: "HOME"),
-        ],
+    SystemChrome.setSystemUIOverlayStyle(
+      const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness: Brightness.light, // Change to Brightness.light
       ),
-      body: Obx(()=>!controller.isDoneInitializing.value? LottieAnimation():SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                padding: EdgeInsets.only(left: 20.w, top: 64.h, right: 20.w),
-                height: 362.h,
-                width: 375.w,
-                color: const Color(0xFFF3F5F8),
-                child: Column(
-                  children: [
-                    topBar(context, "Hi, ${controller.userList[0].name!}"),
-                    SizedBox(
-                      height: 40.h,
-                    ),
-                    SizedBox(
-                      height: 190.h,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                StatsTab(
-                                    text1: AppText.homeStrings[1][0],
-                                    text2: AppText.homeStrings[2][0],
-                                    color: const Color(0xFFB45309)),
-                                StatsTab(
-                                    text1: AppText.homeStrings[1][1],
-                                    text2: AppText.homeStrings[2][1],
-                                    color: const Color(0xFF4178D4)),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                StatsTab(
-                                    text1: AppText.homeStrings[1][2],
-                                    text2: AppText.homeStrings[2][2],
-                                    color: const Color(0xFF52B6DF)),
-                                StatsTab(
-                                    text1: AppText.homeStrings[1][3],
-                                    text2: AppText.homeStrings[2][3],
-                                    color: const Color(0xFFF59E0B)),
-                              ],
-                            ),
-                          ]),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 38.h,
-              ),
-              SizedBox(
-                height: 80.h,
-                width: 337.w,
-                // color:Colors.red,
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SubMenu(
-                      text: "Units",
-                      color: Color(0xFF316D86),
-                      image: "assets/images/home/courses.png",
-                    ),
-                    SubMenu(
-                      text: "Subject",
-                      color: Color(0xFF27487F),
-                      image: "assets/images/home/subjects.png",
-                    ),
-                    SubMenu(
-                      text: "Notes",
-                      color: Color(0xFFF59E0B),
-                      image: "assets/images/home/class.png",
-                    ),
-                    SubMenu(
-                        text: "Presence",
-                        color: Color(0xFF46BD84),
-                        image: "assets/images/home/presence.png"),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 38.h,
-              ),
-              SizedBox(
-                // color: Colors.blue,
-                // height: 500.h,
-                width: 327.w,
-                child: Column(
-                  children: [
-                    SizedBox(
-                      // color: Colors.blue,
-                      height: 55.h,
-                      width: 327.w,
-                      child: Row(children: [
-                        SizedBox(
-                          // color: Colors.amber,
-                          height: 80.h,
-                          width: 220.w,
-      
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 5.h,
-                              ),
-                              HeadingText(
-                                text: "September 19, 2021",
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600,
-                                color:
-                                    AppColors.primaryDarkColor.withOpacity(0.6),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            controller.addTask();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 40.h,
-                            width: 105.w,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF316D86),
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: NormalText(
-                              text: "+ Add Task",
-                              color: const Color(0xFFF3F5F8),
-                              fontSize: 15.sp,
-                            ),
-                          ),
-                        )
-                      ]),
-                    ),
-                    SizedBox(
-                      height: 10.h,
-                    ),
-                    SizedBox(
-                      // color: Colors.blue,
-                      height: 85.h,
-                      width: 327.w,
-                      child: DatePicker(
-                        DateTime.now(),
-                        initialSelectedDate: DateTime.now(),
-                        selectionColor: const Color(0xFF316D86),
-                        selectedTextColor: Colors.white,
-                        monthTextStyle: const TextStyle(
-                          color: AppColors.primaryDarkColor,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        dayTextStyle: TextStyle(
-                            color: AppColors.primaryDarkColor,
-                            fontSize: 12.sp,
-                            fontWeight: FontWeight.w400),
-                        dateTextStyle: TextStyle(
-                            fontSize: 13.sp,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.grey),
-                        onDateChange: (date) {
-                          DateTime dateTime = DateTime.parse(date.toString());
-                          String formattedDate =
-                              DateFormat('M/d/yyyy').format(dateTime);
-                          controller.selectedDate.value = formattedDate;
-                          controller.getfrom();
-                          // Output: 09/26/2023// Output: 09/26/2023
-                        },
+    );
+    Size screenSize = MediaQuery.of(context).size;
+    mainController.getStudentFromLocalDb();
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            TopBar(screenSize: screenSize, mainController: mainController),
+            SizedBox(
+              height: 20.h,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 23.w),
+              child: Column(
+                children: [
+                  RightLeft(
+                    left: "Categories",
+                    right: "see all",
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Category(
+                        icon: "assets/images/svg/art.svg",
+                        text: "Art",
+                        onTap: () {},
                       ),
-                    ),
-                    Obx(() {
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: controller.taskList.length,
-                          itemBuilder: (_, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                controller.showBottomShet(
-                                    context, controller.taskList[index]);
-                              },
-                              child: controller.taskList.isNotEmpty
-                                  ? OneSchedule(model: controller.taskList[index])
-                                  : const Text("No tasks for today"),
-                            );
-                          });
-                    }),
-                  ],
-                ),
-              )
-            ],
-          ),
+                      Category(
+                          icon: "assets/images/svg/medicine.svg",
+                          text: "Biology",
+                          onTap: () {}),
+                      Category(
+                          icon: "assets/images/svg/math.svg",
+                          text: "Math",
+                          onTap: () {}),
+                      Category(
+                          icon: "assets/images/svg/dropper.svg",
+                          text: "Chemistry",
+                          onTap: () {})
+                    ],
+                  ),
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  RightLeft(
+                    left: "Popular courses",
+                    right: "see all",
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                ],
+              ),
+            ),
+
+            CarouselSlider(
+              options: CarouselOptions(height: 240.0, viewportFraction: 0.71),
+              items: [1, 2, 3, 4, 5].map((i) {
+                return Builder(
+                  builder: (BuildContext context) {
+                    return Course(
+                        imageUrl: "assets/images/home/image5.jpg",
+                        stars: "4.5",
+                        title: "Design Thinking Fundamentals",
+                        instructor: "Robert green",
+                        price: "180",
+                        tag: "Best seller");
+                  },
+                );
+              }).toList(),
+            ),
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 23.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 25.h,
+                  ),
+                  RightLeft(
+                    left: "Top tutors",
+                    right: "see all",
+                    onTap: () {},
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Tutor(
+                        image: "assets/images/home/tutor1.jpg",
+                        text: "Esther T.",
+                        onTap: () {},
+                      ),
+                      Tutor(
+                        image: "assets/images/home/tutor2.jpg",
+                        text: "Jacob U.",
+                        onTap: () {},
+                      ),
+                      Tutor(
+                        image: "assets/images/home/tutor3.jpg",
+                        text: "Michael K.",
+                        onTap: () {},
+                      ),
+                      Tutor(
+                        image: "assets/images/home/tutor4.jpg",
+                        text: "Sofia R.",
+                        onTap: () {},
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
+
+            // Testers()
+          ],
         ),
       ),
     );
   }
+}
 
-  Row topBar(BuildContext context,String text) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
+
+class Testers extends StatelessWidget {
+  Testers({super.key});
+  HomeControllerMain mainController = Get.put(HomeControllerMain());
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(
-          height: 53.h,
-          // color: Colors.amber,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              HeadingText(
-                text: text,
-                fontSize: 20.sp,
-              ),
-              SizedBox(
-                height: 3.h,
-              ),
-              Text(
-                AppText.homeStrings[0][1],
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
-          ),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].id.toString()!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].name!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].email!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].phone!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].school!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].courses.toString()
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].studentId!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].level!
+            : "empty")),
+        Obx(() => Text(mainController.userList.isNotEmpty
+            ? mainController.userList[0].dob!
+            : "empty")),
+        TextButton(
+            onPressed: () {
+              AuthHelper.instance.signoutUser();
+            },
+            child: const Text("Sign Out")),
+        const SizedBox(
+          height: 100,
         ),
-        GestureDetector(
-          onTap:()async{
-            await AuthRepo.instance.signoutUser();
-          },
-          child: const Image(image: AssetImage("assets/images/home/bell.png"))),
-        // )
       ],
-    );
+    ));
   }
 }

@@ -2,14 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/db_helper.dart';
-import 'package:studdy/src/features/home/repository/user_dbhelper.dart';
-import 'package:studdy/src/repository/auth_repo/auth_repo.dart';
-import 'package:studdy/src/utils/controllers/controller_list.dart';
+import 'package:studdy/src/features/authentication/repository/auth_helper.dart';
+import 'package:studdy/src/features/authentication/repository/user_dbhelper.dart';
 import 'firebase_options.dart';
 import 'src/common_widgets/auth/logo.dart';
 import 'src/utils/theme/themes.dart';
@@ -21,14 +20,17 @@ Future<void> main() async{
       statusBarIconBrightness: Brightness.dark
     ),
   );
-   WidgetsFlutterBinding.ensureInitialized();
+    WidgetsBinding widgetsBinding =WidgetsFlutterBinding.ensureInitialized();
+    FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) => Get.put(AuthRepo()));
-  await DbHelper.initDb();
+  ) .then((value) => Get.put(AuthHelper()));
+  // await UserDbHelper.initDb();
   await UserDbHelper.initDb();
-  
+
+FlutterNativeSplash.remove();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
@@ -40,7 +42,6 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       builder: (context, child) {
         return GetMaterialApp(
-          initialBinding: InitDep(),
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: AppTheme.lightTheme,
@@ -52,6 +53,25 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class LogoScreen extends StatelessWidget {

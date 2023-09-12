@@ -8,7 +8,7 @@ The Kenyan education system has recently transitioned to the Competency-Based Cu
 
 ## Assumptions
 
-The development timeline for this project is estimated to be reasonable, with the assumption that the team has a clear understanding of the requirements and a well-defined plan in place.
+The development timeline for this project will be reasonable, with the assumption that the team (its a solo project🙃...its not ideal but its what i've got) has a clear understanding of the requirements and a well-defined plan in place.(i just have the end goal of what the app should look, feel and function like... again not ideal but...)
 
 ## Prerequisites
 
@@ -39,4 +39,11 @@ Follow these steps to set up the project and start development:
 ![studdy](screenshots/1.png)
 ![studdy](screenshots/2.png)
 ![studdy](screenshots/3.png)
-![studdy](screenshots/5.png)
+![studdy](screenshots/6.png)
+
+
+## Auth Flow of events
+Couldn't draw any other UML diagram, so.....🙃
+![studdy](screenshots/studdy-auth-sequence..png)
+
+

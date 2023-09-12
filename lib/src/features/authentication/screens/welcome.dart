@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/constants/image_strings.dart';
+import 'package:studdy/src/features/authentication/controllers/welcome_controller.dart';
 import 'package:studdy/src/features/authentication/screens/login.dart';
 import 'package:studdy/src/features/authentication/screens/register.dart';
 
@@ -56,18 +57,18 @@ class _WelcomeState extends State<Welcome> {
             ),
             Row(
               children: [
-                const WelcomeButton(
+                WelcomeButton(
                   text: "Login",
                   background: false,
-                  nextPage: Login(),
+                  nextPage:const Login(),
                 ),
                 SizedBox(
                   width: 10.w,
                 ),
-                const WelcomeButton(
+                WelcomeButton(
                   text:"Register",
                   background: true,
-                  nextPage:  Register()
+                  nextPage: const Register()
                 ),
               ],
             )
@@ -79,7 +80,8 @@ class _WelcomeState extends State<Welcome> {
 }
 
 class WelcomeButton extends StatelessWidget {
-  const WelcomeButton({
+
+   WelcomeButton({
     super.key,
     required this.text,
     required this.background,
@@ -88,16 +90,15 @@ class WelcomeButton extends StatelessWidget {
   final String text;
   final bool background;
   final Widget nextPage;
+  WelcomeController controller  = Get.put(WelcomeController());
+
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Get.to(
-          nextPage,
-          transition: Transition.cupertinoDialog,
-          duration: const Duration(milliseconds: 400)
-        );
+        controller.goToNextPage(nextPage);
+        
       },
       child: Container(
         height: 54.h,
