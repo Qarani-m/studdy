@@ -79,7 +79,7 @@ class _LoginState extends State<Login> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {controller.resetPassword();},
                               child: Text(
                                 "Forgot password?",
                                 style: Theme.of(context)

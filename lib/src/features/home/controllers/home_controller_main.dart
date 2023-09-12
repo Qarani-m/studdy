@@ -21,3 +21,6 @@ class HomeBinding implements Bindings {
     Get.put(HomeControllerMain());
   }
 }
+
+
+
