@@ -1,9 +1,14 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
+import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/features/home/screens/notifications.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({
@@ -18,8 +23,8 @@ class TopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(
-          bottom: 15.h, right: 23.w, top: 40.h, left: 23.w),
+      padding:
+          EdgeInsets.only(bottom: 15.h, right: 23.w, top: 40.h, left: 23.w),
       height: 250.h,
       width: screenSize.width,
       decoration: BoxDecoration(
@@ -30,7 +35,7 @@ class TopBar extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
+          SizedBox(
             height: 100,
             width: screenSize.width,
             child: Row(
@@ -43,8 +48,9 @@ class TopBar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Obx(()=>Text(
-                          "Hi, ${mainController.userList[0].name??"NAME"} 👋",
+                      Obx(
+                        () => Text(
+                          "Hi, ${mainController.userList[0].name ?? "NAME"} 👋",
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
@@ -56,10 +62,7 @@ class TopBar extends StatelessWidget {
                       ),
                       Text(
                         "Let's start learning",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Colors.white,
                               fontWeight: FontWeight.w300,
                             ),
@@ -80,10 +83,16 @@ class TopBar extends StatelessWidget {
                           Positioned(
                             top: 50.h / 2 - 30.h / 2,
                             left: 50.h / 2 - 30.h / 2,
-                            child: Icon(
-                              Icons.notifications_active,
-                              color: Colors.white,
-                              size: 30.h,
+                            child: GestureDetector(
+                              onTap: () {
+                                // print("s");
+                                AppNavigation.navigateTo(Notifications());
+                              },
+                              child: Icon(
+                                Icons.notifications_active,
+                                color: Colors.white,
+                                size: 30.h,
+                              ),
                             ),
                           ),
                           // Positioned(
@@ -111,19 +120,17 @@ class TopBar extends StatelessWidget {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10.r)),
                     child: TextField(
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall
-                          ?.copyWith(
-                              fontSize: 15.sp,
-                              color: AppColors.primaryDarkColor),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                          fontSize: 15.sp, color: AppColors.primaryDarkColor),
                       cursorColor: AppColors.primaryDarkColor,
                       decoration: InputDecoration(
                         hintText: "Search",
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.w300
+                        hintStyle: TextStyle(fontWeight: FontWeight.w300),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          size: 35.h,
+                          color: AppColors.primaryDarkColor,
                         ),
-                        prefixIcon: Icon(Icons.search, size: 35.h,color: AppColors.primaryDarkColor,),
                         // prefixIcon: SvgPicture.asset("assets/images/svg/search.svg",height: 10.h,),
                         contentPadding:
                             EdgeInsets.only(bottom: 6.h, left: 10.w),
@@ -146,14 +153,16 @@ class TopBar extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      mainController.toggleFilterBar();
+                    },
                     child: Container(
                       height: 70,
                       width: 50.w,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10.r)),
-                      child: Icon(size: 30.h, Icons.tune_outlined),
+                      child:Icon(size: 30.h, Icons.tune_outlined)
                     ),
                   )
                 ]),
@@ -163,3 +172,4 @@ class TopBar extends StatelessWidget {
     );
   }
 }
+// 
