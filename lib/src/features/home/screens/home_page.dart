@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,6 +24,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
+  
   HomeControllerMain mainController = Get.put(HomeControllerMain());
 
   @override
@@ -35,7 +37,7 @@ class _HomePageState extends State<HomePage> {
         statusBarIconBrightness: Brightness.light, // Change to Brightness.light
       ),
     );
-    Size screenSize = MediaQuery.of(context).size;
+    Size screenSize = Size(375.w,812.h );
     mainController.getStudentFromLocalDb();
     return Scaffold(
       bottomNavigationBar: BottomNavigation(),
@@ -236,7 +238,7 @@ class HomePageMain extends StatelessWidget {
               RightLeft(
                 left: "Categories",
                 right: "see all",
-                onTap: () {},
+                onTap: () {mainController.seeAllCategories();},
               ),
               SizedBox(
                 height: 20.h,
