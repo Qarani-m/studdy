@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/courses/screens/course_details_page.dart';
 import 'package:studdy/src/features/home/repository/navigation.dart';
@@ -23,7 +24,7 @@ class TutorSearchResult extends StatelessWidget {
             decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage(
-                      "assets/images/home/image5.jpg"),
+                      "assets/images/home/tutor1.jpg"),
                   fit: BoxFit.cover),
               shape: BoxShape.circle,
             ),
@@ -45,10 +46,12 @@ class TutorSearchResult extends StatelessWidget {
               ],
             ),
           ),
-          Icon(
-            Icons.message_outlined,
-            size: 35.h,
-          )
+          SvgPicture.asset("assets/images/svg/comment.svg", color: AppColors.primaryColor,height:34.h,),
+          // Icon(
+          //   color:AppColors.accentColor,
+          //   Icons.email,
+          //   size: 30.h,
+          // )
         ]),
       ),
     );

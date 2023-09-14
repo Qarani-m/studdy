@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:label="studdy"
         android:name="${applicationName}"
@@ -17,8 +18,7 @@
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-              android:name  appinio_video_player: ^1.2.2
-="io.flutter.embedding.android.NormalTheme"
+              android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
             <intent-filter>
