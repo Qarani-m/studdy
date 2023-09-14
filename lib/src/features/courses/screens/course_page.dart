@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:studdy/src/common_widgets/home/top_back_nav_bar.dart';
 
 import '../../../common_widgets/home/category_tuturo.dart';
 
-class Categories extends StatelessWidget {
-  const Categories({super.key});
+class CoursePage extends StatefulWidget {
+  const CoursePage({super.key});
 
+  @override
+  State<CoursePage> createState() => _CoursePageState();
+}
+
+class _CoursePageState extends State<CoursePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +21,7 @@ class Categories extends StatelessWidget {
 
         child: Column(
           children: [
-            const BackNavBar(title: "Categories",),
+            BackNavBar(title: "Categories",),
             SizedBox(height:20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

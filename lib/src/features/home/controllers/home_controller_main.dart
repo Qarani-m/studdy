@@ -4,7 +4,7 @@
 import 'package:get/get.dart';
 import 'package:studdy/src/features/authentication/models/student_model.dart';
 import 'package:studdy/src/features/authentication/repository/user_dbhelper.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 import 'package:studdy/src/features/home/screens/categories.dart';
 
 class HomeControllerMain extends GetxController {

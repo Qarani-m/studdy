@@ -5,7 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:parsed_readmore/parsed_readmore.dart';
 import 'package:studdy/src/common_widgets/home/search_result.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/features/courses/screens/payment_methods.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class CourseDetails extends StatefulWidget {
   const CourseDetails({super.key});
@@ -227,6 +228,8 @@ class _CourseDetailsState extends State<CourseDetails>
         ],
       ),
     )));
+  
+  
   }
 }
 
@@ -302,33 +305,33 @@ class ReviewsCourses extends StatelessWidget {
           ),
           Row(children: [
             const Icon(
-          Icons.star_outlined,
-          color: AppColors.primaryColor,
+              Icons.star_outlined,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             SizedBox(
-          width: 10.w,
+              width: 10.w,
             ),
             Text("5",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryTextDarkColor)),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.primaryTextDarkColor)),
           ])
         ]),
       )
@@ -527,15 +530,20 @@ class AboutCourse extends StatelessWidget {
                           const Text("\$ 180",
                               style: TextStyle(color: AppColors.primaryColor))
                         ]),
-                    Container(
-                      height: 50.h,
-                      width: 200.w,
-                      decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(30.r)),
-                      child: const Center(
-                          child: Text("Buy now",
-                              style: TextStyle(color: Colors.white))),
+                    GestureDetector(
+                      onTap: () {
+                        AppNavigation.navigateTo(Payment());
+                      },
+                      child: Container(
+                        height: 50.h,
+                        width: 200.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.secondaryColor,
+                            borderRadius: BorderRadius.circular(30.r)),
+                        child: const Center(
+                            child: Text("Buy now",
+                                style: TextStyle(color: Colors.white))),
+                      ),
                     )
                   ]))
         ],

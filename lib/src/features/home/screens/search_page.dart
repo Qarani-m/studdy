@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:studdy/src/common_widgets/home/search_result.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

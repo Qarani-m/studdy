@@ -13,7 +13,6 @@ import 'package:studdy/src/common_widgets/home/right_left.dart';
 import 'package:studdy/src/common_widgets/home/top_bar.dart';
 import 'package:studdy/src/common_widgets/loader.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/authentication/repository/auth_helper.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
 
 class HomePage extends StatefulWidget {
@@ -146,6 +145,10 @@ class FilterBar extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -378,51 +381,3 @@ class HomePageMain extends StatelessWidget {
   }
 }
 
-class Testers extends StatelessWidget {
-  Testers({super.key});
-  HomeControllerMain mainController = Get.put(HomeControllerMain());
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-        child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].id.toString()!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].name!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].email!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].phone!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].school!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].courses.toString()
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].studentId!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].level!
-            : "empty")),
-        Obx(() => Text(mainController.userList.isNotEmpty
-            ? mainController.userList[0].dob!
-            : "empty")),
-        TextButton(
-            onPressed: () {
-              AuthHelper.instance.signoutUser();
-            },
-            child: const Text("Sign Out")),
-        const SizedBox(
-          height: 100,
-        ),
-      ],
-    ));
-  }
-}

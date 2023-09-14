@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/courses/screens/course_details_page.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class TutorSearchResult extends StatelessWidget {
   const TutorSearchResult({
@@ -59,7 +59,9 @@ class TutorSearchResult extends StatelessWidget {
 }
 
 class CourseSearchResult extends StatelessWidget {
+  final bool review;
   const CourseSearchResult({
+    this.review=false,
     super.key,
   });
 
@@ -95,7 +97,7 @@ class CourseSearchResult extends StatelessWidget {
                 SizedBox(width: 10.w),
                 SizedBox(
                   height: 100.h,
-                  width: 150.w,
+                  width:review?130.w: 150.w,
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -148,7 +150,21 @@ class CourseSearchResult extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(7.r)),
-                  child: const Icon(Icons.bookmark),
+                  child: review? Row(
+                      children: [
+                        Icon(Icons.star, color: AppColors.primaryColor),
+                        Text(
+                          "4.5",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14.sp),
+                        )
+                      ],
+                    ): Icon(Icons.bookmark),
                 )
               ],
             ),

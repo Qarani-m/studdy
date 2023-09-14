@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 import 'package:studdy/src/features/home/screens/notifications.dart';
 import 'package:studdy/src/features/home/screens/search_page.dart';
 

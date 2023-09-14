@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class BackNavBar extends StatelessWidget {
   final String title;
@@ -35,6 +35,7 @@ class BackNavBar extends StatelessWidget {
         ),
       ],
     );
+
 
   }
 }
