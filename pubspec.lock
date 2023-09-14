@@ -749,6 +749,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  video_player:
+    dependency: "direct main"
+    description:
+      name: video_player
+      sha256: d3910a8cefc0de8a432a4411dcf85030e885d8fef3ddea291f162253a05dbf01
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.7.1"
+  video_player_android:
+    dependency: transitive
+    description:
+      name: video_player_android
+      sha256: "3fe89ab07fdbce786e7eb25b58532d6eaf189ceddc091cb66cba712f8d9e8e55"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.10"
+  video_player_avfoundation:
+    dependency: transitive
+    description:
+      name: video_player_avfoundation
+      sha256: c3b123a5a56c9812b9029f840c65b92fd65083eb08d69be016b01e8aa018f77d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.10"
+  video_player_platform_interface:
+    dependency: transitive
+    description:
+      name: video_player_platform_interface
+      sha256: be72301bf2c0150ab35a8c34d66e5a99de525f6de1e8d27c0672b836fe48f73a
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.2.1"
+  video_player_web:
+    dependency: transitive
+    description:
+      name: video_player_web
+      sha256: "66fc0d56554143fee4c623f70e45e4272b94fd246283cb67edabb9d1e4122a4f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   web:
     dependency: transitive
     description:
@@ -790,5 +830,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.1.0-185.0.dev <4.0.0"
-  flutter: ">=3.10.0"
+  dart: ">=3.1.0 <4.0.0"
+  flutter: ">=3.13.0"
