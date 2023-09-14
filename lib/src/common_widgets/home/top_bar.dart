@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +8,7 @@ import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
 import 'package:studdy/src/features/home/repository/navigation.dart';
 import 'package:studdy/src/features/home/screens/notifications.dart';
+import 'package:studdy/src/features/home/screens/search_page.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({
@@ -119,36 +119,60 @@ class TopBar extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(10.r)),
-                    child: TextField(
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: 15.sp, color: AppColors.primaryDarkColor),
-                      cursorColor: AppColors.primaryDarkColor,
-                      decoration: InputDecoration(
-                        hintText: "Search",
-                        hintStyle: TextStyle(fontWeight: FontWeight.w300),
-                        prefixIcon: Icon(
-                          Icons.search,
-                          size: 35.h,
-                          color: AppColors.primaryDarkColor,
-                        ),
-                        // prefixIcon: SvgPicture.asset("assets/images/svg/search.svg",height: 10.h,),
-                        contentPadding:
-                            EdgeInsets.only(bottom: 6.h, left: 10.w),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.r),
-                            borderSide: const BorderSide(
-                                width: 0, color: Colors.white)),
+                    child: GestureDetector(
+                      onTap: () {
+                        AppNavigation.navigateTo(SearchPage());
+                      },
+                      child: Stack(
+                        children: [
+                          TextField(
+                            readOnly: true,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall
+                                ?.copyWith(
+                                    fontSize: 15.sp,
+                                    color: AppColors.primaryDarkColor),
+                            cursorColor: AppColors.primaryDarkColor,
+                            decoration: InputDecoration(
+                              hintText: "Search",
+                              hintStyle: TextStyle(fontWeight: FontWeight.w300),
+                              prefixIcon: Icon(
+                                Icons.search,
+                                size: 35.h,
+                                color: AppColors.primaryDarkColor,
+                              ),
+                              // prefixIcon: SvgPicture.asset("assets/images/svg/search.svg",height: 10.h,),
+                              contentPadding:
+                                  EdgeInsets.only(bottom: 6.h, left: 10.w),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  borderSide: const BorderSide(
+                                      width: 0, color: Colors.white)),
 
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.r),
-                            borderSide: const BorderSide(
-                                width: 0, color: Colors.white)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15.r),
-                            borderSide: const BorderSide(
-                                width: 0, color: Colors.white)),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  borderSide: const BorderSide(
+                                      width: 0, color: Colors.white)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(15.r),
+                                  borderSide: const BorderSide(
+                                      width: 0, color: Colors.white)),
 
-//       )
+                              //       )
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: (){AppNavigation.navigateTo(SearchPage());},
+                            child: Container(
+                                // padding: EdgeInsets.only(left: 10.w, right: 10.w),
+                                height: 70,
+                                width: 270.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.transparent,
+                                    borderRadius: BorderRadius.circular(10.r))),
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -157,13 +181,12 @@ class TopBar extends StatelessWidget {
                       mainController.toggleFilterBar();
                     },
                     child: Container(
-                      height: 70,
-                      width: 50.w,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10.r)),
-                      child:Icon(size: 30.h, Icons.tune_outlined)
-                    ),
+                        height: 70,
+                        width: 50.w,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.r)),
+                        child: Icon(size: 30.h, Icons.tune_outlined)),
                   )
                 ]),
           )
