@@ -374,6 +374,28 @@ class HomePageMain extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
+        RightLeft(
+                left: "Continue learning",
+                right: "see all",
+                onTap: () {},
+              ),
+              SizedBox(
+          height: 15.h,
+        ),
+
+        
+
+
+
+
+
+
+
+
+        SizedBox(
+          height: 15.h,
+        )
+
 
         // Testers()
       ],
