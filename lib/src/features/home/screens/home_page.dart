@@ -2,18 +2,25 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:studdy/src/common_widgets/home/category_tuturo.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:studdy/src/common_widgets/home/bottom_nav_bar.dart';
+import 'package:studdy/src/common_widgets/home/category_tutur.dart';
 import 'package:studdy/src/common_widgets/home/course_slider.dart';
+import 'package:studdy/src/common_widgets/home/filter_bar.dart';
 import 'package:studdy/src/common_widgets/home/right_left.dart';
 import 'package:studdy/src/common_widgets/home/top_bar.dart';
 import 'package:studdy/src/common_widgets/loader.dart';
 import 'package:studdy/src/constants/colors.dart';
+import 'package:studdy/src/features/courses/models/tutor_model.dart';
+import 'package:studdy/src/features/tutor/repository/tutor_db_helper.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
+import 'package:studdy/src/features/home/controllers/navigation_controller.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,20 +30,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
-  
   HomeControllerMain mainController = Get.put(HomeControllerMain());
-
+  HomeNavigationController homeNavigationController =
+      Get.put(HomeNavigationController());
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light, // Change to Brightness.light
-      ),
-    );
-    Size screenSize = Size(375.w,812.h );
+    resetSystemUIOverlayStyle(Brightness.light);
+    Size screenSize = Size(375.w, 812.h);
     mainController.getStudentFromLocalDb();
     return Scaffold(
       bottomNavigationBar: BottomNavigation(),
@@ -53,7 +53,10 @@ class _HomePageState extends State<HomePage> {
               } else {
                 return Stack(children: [
                   HomePageMain(
-                      screenSize: screenSize, mainController: mainController),
+                    screenSize: screenSize,
+                    mainController: mainController,
+                    homeNavigationController: homeNavigationController,
+                  ),
                   Obx(
                     () => Positioned(
                         top: 240.h,
@@ -70,161 +73,20 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-class FilterBar extends StatelessWidget {
-  const FilterBar({
-    required this.mainController,
-    super.key,
-  });
-  final HomeControllerMain mainController;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: 1,
-      duration: Duration(milliseconds: 9000),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 4.w),
-        width: 200.w,
-        height: 130.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.r),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.primaryDarkColor.withOpacity(0.5),
-              offset: const Offset(
-                1.0,
-                1.0,
-              ),
-              blurRadius: 10.0,
-              spreadRadius: 0.5,
-            ), //BoxShadow
-            const BoxShadow(
-              color: Colors.white,
-              offset: Offset(0.0, 0.0),
-              blurRadius: 0.0,
-              spreadRadius: 0.0,
-            ), //BoxShadow
-          ],
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-                onTap: () {
-                  mainController.searchFilter = "courses";
-                  mainController.toggleFilterBar();
-                },
-                child: const Text("Courses")),
-            Container(
-              height: 1.h,
-              width: 200,
-              color: AppColors.primaryDarkColor.withOpacity(0.1),
-            ),
-            GestureDetector(
-                onTap: () {
-                  mainController.searchFilter = "tutor";
-                  mainController.toggleFilterBar();
-                },
-                child: const Text("Tutors")),
-            Container(
-              height: 1.h,
-              width: 200,
-              color: AppColors.primaryDarkColor.withOpacity(0.1),
-            ),
-            GestureDetector(
-                onTap: () {
-                  mainController.searchFilter = "free";
-                  mainController.toggleFilterBar();
-                },
-                child: Text("Free")),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-
-
-
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
-
-  @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
-}
-
-class _BottomNavigationState extends State<BottomNavigation> {
-  var _currentIndex = 0;
-  var _selectedColor = AppColors.primaryDarkColor;
-  @override
-  Widget build(BuildContext context) {
-    return SalomonBottomBar(
-      currentIndex: _currentIndex,
-      onTap: (i) => setState(() => _currentIndex = i),
-      items: [
-        /// Home
-        SalomonBottomBarItem(
-          icon: SvgPicture.asset(
-            "assets/images/svg/home.svg",
-            color: _selectedColor,
-            height: 20.h,
-          ),
-          title: Text("Home"),
-          selectedColor: _selectedColor,
-        ),
-
-        /// Likes
-        SalomonBottomBarItem(
-          icon: SvgPicture.asset("assets/images/svg/book.svg",
-              color: _selectedColor, height: 20.h),
-          title: Text("Courses"),
-          selectedColor: _selectedColor,
-        ),
-
-        /// Search
-        SalomonBottomBarItem(
-          icon: Icon(
-            Icons.bookmark,
-            size: 20.h,
-          ),
-          // icon: SvgPicture.asset("assets/images/svg/home.svg", color: _selectedColor,),
-          title: Text("Bookmarks"),
-          selectedColor: _selectedColor,
-        ),
-
-        SalomonBottomBarItem(
-          icon: SvgPicture.asset("assets/images/svg/comment.svg",
-              color: _selectedColor, height: 20.h),
-          title: Text("Chat"),
-          selectedColor: _selectedColor,
-        ),
-
-        /// Profile
-        SalomonBottomBarItem(
-          icon: SvgPicture.asset("assets/images/svg/user.svg",
-              color: _selectedColor, height: 20.h),
-          title: Text("Profile"),
-          selectedColor: _selectedColor,
-        ),
-      ],
-    );
-  }
-}
-// HomePageMain(screenSize: screenSize, mainController: mainController),
+} // HomePageMain(screenSize: screenSize, mainController: mainController),
 
 class HomePageMain extends StatelessWidget {
-  const HomePageMain({
+  HomePageMain({
     super.key,
     required this.screenSize,
     required this.mainController,
+    required this.homeNavigationController,
   });
 
   final Size screenSize;
   final HomeControllerMain mainController;
+  final HomeNavigationController homeNavigationController;
+  CourseHelper courseHelperController = Get.put(CourseHelper());
 
   @override
   Widget build(BuildContext context) {
@@ -241,7 +103,9 @@ class HomePageMain extends StatelessWidget {
               RightLeft(
                 left: "Categories",
                 right: "see all",
-                onTap: () {mainController.seeAllCategories();},
+                onTap: () {
+                  mainController.seeAllCategories();
+                },
               ),
               SizedBox(
                 height: 20.h,
@@ -316,31 +180,45 @@ class HomePageMain extends StatelessWidget {
               SizedBox(
                 height: 15.h,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Tutor(
-                    image: "assets/images/home/tutor1.jpg",
-                    text: "Esther T.",
-                    onTap: () {},
-                  ),
-                  Tutor(
-                    image: "assets/images/home/tutor2.jpg",
-                    text: "Jacob U.",
-                    onTap: () {},
-                  ),
-                  Tutor(
-                    image: "assets/images/home/tutor3.jpg",
-                    text: "Michael K.",
-                    onTap: () {},
-                  ),
-                  Tutor(
-                    image: "assets/images/home/tutor4.jpg",
-                    text: "Sofia R.",
-                    onTap: () {},
-                  ),
-                ],
-              ),
+              FutureBuilder(
+                  future: mainController.geTtopTutors(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Text("waiting"); // or another loading widget
+                    } else if (snapshot.hasError) {
+                      return Text("Errore---->{snapshot.error}");
+                    } else {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 100,
+                            width: 327.w,
+                            child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: List.generate(4, (index) {
+                                  final tutorData = courseHelperController
+                                      .topTutorsData[index];
+                                  return Row(
+                                    children: [
+                                      Tutor(
+                                        tutorModel: TutorModel(
+                                          tutorName: tutorData["name"],
+                                          tutorImageUrl: tutorData["imageUrl"],
+                                          tutorId: tutorData["tutorId"],
+                                        ),
+                                      ),
+                                      // SizedBox(width: 12.w,)
+                                    ],
+                                  );
+                                })),
+                          ),
+                        ],
+                      );
+
+                    }
+                  }),
               SizedBox(
                 height: 15.h,
               ),
@@ -375,31 +253,20 @@ class HomePageMain extends StatelessWidget {
           height: 15.h,
         ),
         RightLeft(
-                left: "Continue learning",
-                right: "see all",
-                onTap: () {},
-              ),
-              SizedBox(
+          left: "Continue learning",
+          right: "see all",
+          onTap: () {},
+        ),
+        SizedBox(
           height: 15.h,
         ),
-
-        
-
-
-
-
-
-
-
 
         SizedBox(
           height: 15.h,
         )
-
 
         // Testers()
       ],
     );
   }
 }
-

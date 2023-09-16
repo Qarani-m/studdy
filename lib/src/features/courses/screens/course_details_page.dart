@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:parsed_readmore/parsed_readmore.dart';
-import 'package:studdy/src/common_widgets/home/search_result.dart';
 import 'package:studdy/src/common_widgets/tutor/one_tutor.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/courses/screens/payment_methods.dart';
+import 'package:studdy/src/features/home/controllers/navigation_controller.dart';
 import 'package:studdy/src/routing/navigation.dart';
 
 class CourseDetails extends StatefulWidget {
@@ -20,6 +20,8 @@ class _CourseDetailsState extends State<CourseDetails>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    resetSystemUIOverlayStyle(Brightness.dark);
+
     const String inputData =
         "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
 

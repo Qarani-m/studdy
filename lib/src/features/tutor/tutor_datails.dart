@@ -25,6 +25,22 @@ class _TutrorDetailsState extends State<TutrorDetails>
         "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
 
     TabController tabController = TabController(length: 3, vsync: this);
+    return TutorDetailsMain(tabController: tabController, inputData: inputData);
+  }
+}
+
+class TutorDetailsMain extends StatelessWidget {
+  const TutorDetailsMain({
+    super.key,
+    required this.tabController,
+    required this.inputData,
+  });
+
+  final TabController tabController;
+  final String inputData;
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(left: 23.w, right: 23.w, top: 50.h),
@@ -63,7 +79,7 @@ class _TutrorDetailsState extends State<TutrorDetails>
             ),
             Container(
               height: 548.h,
-              child: TabBarView(controller: tabController, children: const [
+              child: TabBarView(controller: tabController, children:  [
                 AboutCourse(
                   inputData: inputData,
                 ),

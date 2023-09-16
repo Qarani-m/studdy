@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:studdy/src/common_widgets/home/top_back_nav_bar.dart';
 
-import '../../../common_widgets/home/category_tuturo.dart';
+import '../../../common_widgets/home/category_tutur.dart';
 
 class Categories extends StatelessWidget {
   const Categories({super.key});
