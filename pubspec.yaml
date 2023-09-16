@@ -53,6 +53,7 @@ dependencies:
   salomon_bottom_bar: ^3.3.2
   badges: ^3.1.2
   parsed_readmore: ^0.0.6
+  shimmer:
 
 
 

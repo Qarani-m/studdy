@@ -3,9 +3,11 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:parsed_readmore/parsed_readmore.dart';
-import 'package:studdy/src/common_widgets/home/search_result.dart';
+import 'package:studdy/src/common_widgets/tutor/one_tutor.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/features/courses/screens/payment_methods.dart';
+import 'package:studdy/src/features/home/controllers/navigation_controller.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class CourseDetails extends StatefulWidget {
   const CourseDetails({super.key});
@@ -18,6 +20,8 @@ class _CourseDetailsState extends State<CourseDetails>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
+    resetSystemUIOverlayStyle(Brightness.dark);
+
     const String inputData =
         "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
 
@@ -227,6 +231,8 @@ class _CourseDetailsState extends State<CourseDetails>
         ],
       ),
     )));
+  
+  
   }
 }
 
@@ -237,6 +243,9 @@ class ReviewsCourses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     const String inputData =
+        "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
+
     return SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
@@ -287,54 +296,74 @@ class ReviewsCourses extends StatelessWidget {
                 ])),
           ),
           SizedBox(
+            height: 10.h,),
+
+          SizedBox(
             height: 76.h,
-            child: Text(
-                overflow: TextOverflow.ellipsis,
-                maxLines: 5,
-                "When using custom values we have specified the to be our targe have specified the to be our targebe our targe have specified the to be our targebe our targe have specified the to be our targe have specified the t,When using custom values we have specified the to be our targe have specified the to be our targe have specified the t",
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.primaryTextDarkColor)),
+            child: ParsedReadMore(
+            inputData,
+            trimMode: TrimMode.line,
+            trimLines: 3,
+            delimiterStyle: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(color: AppColors.fadedTextColor),
+            style: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: AppColors.fadedTextColor),
+            trimCollapsedText: 'read more',
+            trimExpandedText: 'hide',
+            moreStyle: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: AppColors.primaryDarkColor),
+            lessStyle: Theme.of(context)
+                .textTheme
+                .bodySmall
+                ?.copyWith(color: AppColors.primaryDarkColor),
+          ),
           ),
           SizedBox(
             height: 10.h,
           ),
           Row(children: [
             const Icon(
-          Icons.star_outlined,
-          color: AppColors.primaryColor,
+              Icons.star_outlined,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             const Icon(
-          Icons.star,
-          color: AppColors.primaryColor,
+              Icons.star,
+              color: AppColors.primaryColor,
             ),
             SizedBox(
-          width: 10.w,
+              width: 10.w,
             ),
             Text("5",
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w400,
-                color: AppColors.primaryTextDarkColor)),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 13.sp,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.primaryTextDarkColor)),
           ])
         ]),
       )
     ]));
   }
 }
+
+
 
 class LessonsCourse extends StatelessWidget {
   const LessonsCourse({
@@ -461,7 +490,7 @@ class AboutCourse extends StatelessWidget {
                 color: AppColors.primaryTextDarkColor.withOpacity(0.9)),
           ),
           SizedBox(height: 5.h),
-          const TutorSearchResult(),
+          const OneTutor(),
           SizedBox(height: 10.h),
           Text(
             "Info",
@@ -527,15 +556,20 @@ class AboutCourse extends StatelessWidget {
                           const Text("\$ 180",
                               style: TextStyle(color: AppColors.primaryColor))
                         ]),
-                    Container(
-                      height: 50.h,
-                      width: 200.w,
-                      decoration: BoxDecoration(
-                          color: AppColors.secondaryColor,
-                          borderRadius: BorderRadius.circular(30.r)),
-                      child: const Center(
-                          child: Text("Buy now",
-                              style: TextStyle(color: Colors.white))),
+                    GestureDetector(
+                      onTap: () {
+                        AppNavigation.navigateTo(Payment());
+                      },
+                      child: Container(
+                        height: 50.h,
+                        width: 200.w,
+                        decoration: BoxDecoration(
+                            color: AppColors.secondaryColor,
+                            borderRadius: BorderRadius.circular(30.r)),
+                        child: const Center(
+                            child: Text("Buy now",
+                                style: TextStyle(color: Colors.white))),
+                      ),
                     )
                   ]))
         ],

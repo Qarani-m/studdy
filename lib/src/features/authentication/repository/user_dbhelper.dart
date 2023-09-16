@@ -49,11 +49,13 @@ class UserDbHelper {
   static Future<int> insertStudent(Student model) async {
     print("inserting");
     await db!.delete(tablename);
+
     return await db?.insert(tablename, model.toJson()) ?? 0;
   }
   static Future<List<Student>> getStudentFromLocalDb() async {
   print("Query called");
   List<Map<String, dynamic>> taskMaps = await db!.query(tablename,);
+
   return taskMaps.map((data) => Student.fromJson(data)).toList();
 }
 }

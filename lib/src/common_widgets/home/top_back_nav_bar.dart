@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/app_navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class BackNavBar extends StatelessWidget {
   final String title;
@@ -14,7 +15,7 @@ class BackNavBar extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            AppNavigation.goBackHome();
+            AppNavigationV2.goBack();
           },
           child:Container(
             padding: EdgeInsets.all(5.w),
@@ -35,6 +36,7 @@ class BackNavBar extends StatelessWidget {
         ),
       ],
     );
+
 
   }
 }

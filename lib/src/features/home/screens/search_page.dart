@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:studdy/src/common_widgets/home/search_result.dart';
+import 'package:studdy/src/common_widgets/tutor/one_tutor.dart';
 import 'package:studdy/src/constants/colors.dart';
-import 'package:studdy/src/features/home/repository/navigation.dart';
+import 'package:studdy/src/routing/navigation.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -44,13 +45,17 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                         width: 280.w,
                         child: TextField(
                           // autofocus: true,
-                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              fontSize: 15.sp, color: AppColors.primaryDarkColor),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                  fontSize: 15.sp,
+                                  color: AppColors.primaryDarkColor),
                           cursorColor: AppColors.primaryDarkColor,
                           decoration: InputDecoration(
                             hintText: "Search",
                             hintStyle: TextStyle(fontWeight: FontWeight.w300),
-            
+
                             // prefixIcon: SvgPicture.asset("assets/images/svg/search.svg",height: 10.h,),
                             contentPadding:
                                 EdgeInsets.only(bottom: 6.h, left: 10.w),
@@ -58,7 +63,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                 borderRadius: BorderRadius.circular(15.r),
                                 borderSide: const BorderSide(
                                     width: 0, color: Colors.black)),
-            
+
                             enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(15.r),
                                 borderSide: const BorderSide(
@@ -67,7 +72,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                 borderRadius: BorderRadius.circular(15.r),
                                 borderSide: const BorderSide(
                                     width: 0, color: Colors.white)),
-            
+
                             //       )
                           ),
                         ),
@@ -102,7 +107,8 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                 height: 10.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Result for \"Design\""),
                                   Text(
@@ -144,7 +150,8 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                 height: 10.h,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text("Result for \"Design\""),
                                   Text(
@@ -162,11 +169,7 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                                 height: 20.h,
                               ),
                               Column(children: [
-                                TutorSearchResult(),
-                                TutorSearchResult(),
-                                TutorSearchResult(),
-                                TutorSearchResult(),
-                                TutorSearchResult(),
+                                OneTutor(),
                               ])
                             ]),
                           ),
