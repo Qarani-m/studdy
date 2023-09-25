@@ -41,6 +41,9 @@ Follow these steps to set up the project and start development:
 ![studdy](screenshots/3.png)
 ![studdy](screenshots/6.png)
 ![studdy](screenshots/7.png)
+![studdy](screenshots/8.png)
+![studdy](screenshots/9.png)
+![studdy](screenshots/10.png)
 
 
 ## Auth Flow of events

@@ -231,8 +231,6 @@ class _CourseDetailsState extends State<CourseDetails>
         ],
       ),
     )));
-  
-  
   }
 }
 
@@ -243,7 +241,7 @@ class ReviewsCourses extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     const String inputData =
+    const String inputData =
         "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
 
     return SingleChildScrollView(
@@ -296,33 +294,33 @@ class ReviewsCourses extends StatelessWidget {
                 ])),
           ),
           SizedBox(
-            height: 10.h,),
-
+            height: 10.h,
+          ),
           SizedBox(
             height: 76.h,
             child: ParsedReadMore(
-            inputData,
-            trimMode: TrimMode.line,
-            trimLines: 3,
-            delimiterStyle: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: AppColors.fadedTextColor),
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall
-                ?.copyWith(color: AppColors.fadedTextColor),
-            trimCollapsedText: 'read more',
-            trimExpandedText: 'hide',
-            moreStyle: Theme.of(context)
-                .textTheme
-                .bodySmall
-                ?.copyWith(color: AppColors.primaryDarkColor),
-            lessStyle: Theme.of(context)
-                .textTheme
-                .bodySmall
-                ?.copyWith(color: AppColors.primaryDarkColor),
-          ),
+              inputData,
+              trimMode: TrimMode.line,
+              trimLines: 3,
+              delimiterStyle: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: AppColors.fadedTextColor),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(color: AppColors.fadedTextColor),
+              trimCollapsedText: 'read more',
+              trimExpandedText: 'hide',
+              moreStyle: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(color: AppColors.primaryDarkColor),
+              lessStyle: Theme.of(context)
+                  .textTheme
+                  .bodySmall
+                  ?.copyWith(color: AppColors.primaryDarkColor),
+            ),
           ),
           SizedBox(
             height: 10.h,
@@ -362,8 +360,6 @@ class ReviewsCourses extends StatelessWidget {
     ]));
   }
 }
-
-
 
 class LessonsCourse extends StatelessWidget {
   const LessonsCourse({
