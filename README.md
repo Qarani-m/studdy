@@ -12,9 +12,6 @@ The development timeline for this project will be reasonable, with the assumptio
 
 ## Prerequisites
 
-alternative
-
-
 
 Before getting started with the development and deployment of Studdy, ensure the following prerequisites are met:
 
