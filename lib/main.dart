@@ -26,14 +26,12 @@ Future<void> main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   ) .then((value) => Get.put(AuthHelper()));
   await UserDbHelper.initDb();
-
 FlutterNativeSplash.remove();
   runApp(const MyApp());
 
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
