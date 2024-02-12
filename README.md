@@ -15,7 +15,7 @@ The development timeline for this project will be reasonable, with the assumptio
 
 Before getting started with the development and deployment of Studdy, ensure the following prerequisites are met:
 
-- Dart 3: Dart is the programming language used by Flutter for building cross-platform applications. Ensure that Dart 3 is installed on your development environment.
+- Dart 3: Dart is the programming language used by Flutter for building cross-platform applications. Ensure that Dart 3 is installed on your development environment
 
 - Java 17: The backend services of the app are developed using Java. Make sure Java 17 is installed and configured correctly.
 
