@@ -18,9 +18,11 @@ import 'package:studdy/src/common_widgets/home/top_bar.dart';
 import 'package:studdy/src/common_widgets/loader.dart';
 import 'package:studdy/src/constants/colors.dart';
 import 'package:studdy/src/features/courses/models/tutor_model.dart';
+import 'package:studdy/src/features/home/controllers/category_controller.dart';
 import 'package:studdy/src/features/tutor/repository/tutor_db_helper.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
 import 'package:studdy/src/features/home/controllers/navigation_controller.dart';
+import 'package:studdy/src/features/tutor/tutor_datails.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -86,6 +88,9 @@ class HomePageMain extends StatelessWidget {
   final Size screenSize;
   final HomeControllerMain mainController;
   final HomeNavigationController homeNavigationController;
+
+   final  CategoryController categoryController = Get.put(CategoryController());
+
   CourseHelper courseHelperController = Get.put(CourseHelper());
 
   @override
@@ -113,31 +118,35 @@ class HomePageMain extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Category(
-                    icon: "assets/images/svg/art.svg",
-                    text: "Art",
-                    onTap: () {},
-                  ),
-                  Category(
-                      icon: "assets/images/svg/medicine.svg",
-                      text: "Biology",
-                      onTap: () {}),
-                  Category(
-                      icon: "assets/images/svg/math.svg",
-                      text: "Math",
-                      onTap: () {}),
-                  Category(
-                      icon: "assets/images/svg/dropper.svg",
-                      text: "Chemistry",
-                      onTap: () {})
-                ],
+  Category(
+    icon: "assets/images/svg/art.svg",
+    text: "Art",
+    onTap: () => categoryController.seeAllCategories("Art"),
+  ),
+  Category(
+    icon: "assets/images/svg/medicine.svg",
+    text: "Biology",
+    onTap: () => categoryController.seeAllCategories("Biology"),
+  ),
+  Category(
+    icon: "assets/images/svg/math.svg",
+    text: "Math",
+    onTap: () => categoryController.seeAllCategories("Math"),
+  ),
+  Category(
+    icon: "assets/images/svg/dropper.svg",
+    text: "Chemistry",
+    onTap: () => categoryController.seeAllCategories("Chemistry"),
+  ),
+]
+,
               ),
               SizedBox(
                 height: 25.h,
               ),
               RightLeft(
                 left: "Popular courses",
-                right: "see all",
+                right: "",
                 onTap: () {},
               ),
               SizedBox(
@@ -174,7 +183,7 @@ class HomePageMain extends StatelessWidget {
               ),
               RightLeft(
                 left: "Top tutors",
-                right: "see all",
+                right: "",
                 onTap: () {},
               ),
               SizedBox(
@@ -224,7 +233,7 @@ class HomePageMain extends StatelessWidget {
               ),
               RightLeft(
                 left: "Free courses",
-                right: "see all",
+                right: "",
                 onTap: () {},
               ),
             ],
@@ -252,15 +261,26 @@ class HomePageMain extends StatelessWidget {
         SizedBox(
           height: 15.h,
         ),
-        RightLeft(
-          left: "Continue learning",
-          right: "see all",
-          onTap: () {},
+        Padding(
+            padding:  EdgeInsets.only(left:23.w, right: 23.w),
+          child: RightLeft(
+            left: "Continue learning",
+            right: "",
+            onTap: () {},
+          ),
         ),
         SizedBox(
           height: 15.h,
         ),
 
+        Column(
+          children: List.generate(3, (index) =>Padding(
+            padding:  EdgeInsets.only(left:23.w, right: 23.w),
+            child: CourseSearchResult(),
+          ) ),
+
+        )
+,
         SizedBox(
           height: 15.h,
         )

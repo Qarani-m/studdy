@@ -23,14 +23,15 @@ class LoginController extends GetxController{
 
 
   void loginAction() async{
-    email = "emqarani39l@gmail.com";
-    password = "Somepassword";
-    // email = emailController.text;
-    // password = passwordController.text;
+    // email = "emqarani39l@gmail.com";
+    // password = "Somepassword";
+    email = emailController.text;
+    password = passwordController.text;
     isAuthenticating.value=true;
     try{
     await AuthHelper.instance.loginUser(email, password,);
     }catch(e){
+      print(e);
       const LoginFailure();
       isAuthenticating.value=false;
     }

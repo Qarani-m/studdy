@@ -29,7 +29,7 @@ class HomeControllerMain extends GetxController {
   }
 
   void seeAllCategories() {
-    AppNavigation.navigateTo(const Categories());
+    AppNavigation.navigateTo( Categories());
   }
 
   Future<void> geTtopTutors() async {

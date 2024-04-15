@@ -134,17 +134,23 @@ class AuthHelper extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       if (firebaseUser.value != null) {
+
+       
         // readfirestore and restore the data
         await _getUserByEmail(email);
         Get.offAll(() => const HomePage());
       } else {
         Get.to(const Login());
       }
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (exc){
+       print(email);
+        print(password);
+       print(exc.message);
       const ex = LoginFailure();
       _warningSnackBar("Auth Failed", ex.message);
       throw ex;
     } catch (_) {
+      print("+++++++++++");
       const ex = LoginFailure();
       _warningSnackBar("Auth Failed", ex.message);
       throw ex;

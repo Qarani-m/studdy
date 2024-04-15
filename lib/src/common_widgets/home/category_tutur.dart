@@ -39,6 +39,9 @@ class Category extends StatelessWidget {
             ),
             child: Center(
                 child: SvgPicture.asset(
+                  height: 30.h,
+                  width: 30.h,
+                  
               icon,
               color: AppColors.primaryDarkColor,
             )),

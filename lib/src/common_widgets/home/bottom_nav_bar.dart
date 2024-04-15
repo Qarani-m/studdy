@@ -51,12 +51,12 @@ class _BottomNavigationState extends State<BottomNavigation> {
           selectedColor: _selectedColor,
         ),
 
-        SalomonBottomBarItem(
-          icon: SvgPicture.asset("assets/images/svg/comment.svg",
-              color: _selectedColor, height: 20.h),
-          title: Text("Chat"),
-          selectedColor: _selectedColor,
-        ),
+        // SalomonBottomBarItem(
+        //   icon: SvgPicture.asset("assets/images/svg/comment.svg",
+        //       color: _selectedColor, height: 20.h),
+        //   title: Text("Chat"),
+        //   selectedColor: _selectedColor,
+        // ),
 
         /// Profile
         SalomonBottomBarItem(

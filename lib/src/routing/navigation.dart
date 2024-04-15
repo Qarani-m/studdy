@@ -24,4 +24,14 @@ class AppNavigation{
       
     );
   }
+
+  static void navigateToWithParams(Widget page, Map<String, dynamic> params) {
+    resetSystemUIOverlayStyle(Brightness.dark);
+    Get.to(
+      () => page,
+      arguments: params,
+      transition: Transition.cupertinoDialog,
+      duration: const Duration(microseconds: 400),
+    );
+  }
 }

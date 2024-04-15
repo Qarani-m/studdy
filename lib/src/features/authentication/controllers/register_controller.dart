@@ -21,14 +21,14 @@ class RegisterController extends GetxController {
   var validationMessage = "";
 
 void registerAction() async {
-  name = "martin";
-   email = "emqarani39k@gmail.com";
-   phone = "0704847676";
-   password = "Somepassword";
-  // name = nameController.text.trim();
-  // email = emailController.text.trim();
-  // phone = phoneController.text.trimRight();
-  // password = passwordController.text.trim();
+  // name = "martin";
+  //  email = "emqarani39k@gmail.com";
+  //  phone = "0704847676";
+  //  password = "Somepassword";
+  name = nameController.text.trim();
+  email = emailController.text.trim();
+  phone = phoneController.text.trimRight();
+  password = passwordController.text.trim();
   String inputValidationResults = InputValidation.validationResults(name, email, phone, password);
 
   if (inputValidationResults != "pass") {

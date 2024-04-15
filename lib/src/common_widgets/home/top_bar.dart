@@ -177,9 +177,7 @@ class TopBar extends StatelessWidget {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      mainController.toggleFilterBar();
-                    },
+                    onTap: () { },
                     child: Container(
                         height: 70,
                         width: 50.w,
