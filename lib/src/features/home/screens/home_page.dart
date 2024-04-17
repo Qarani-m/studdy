@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     Size screenSize = Size(375.w, 812.h);
     mainController.getStudentFromLocalDb();
     return Scaffold(
-      bottomNavigationBar: BottomNavigation(),
+      bottomNavigationBar: BottomNavigation(initialIndex: 0,),
       body: SingleChildScrollView(
         child: FutureBuilder(
             future: mainController.getStudentFromLocalDb(),

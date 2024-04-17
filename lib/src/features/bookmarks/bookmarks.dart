@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:studdy/src/common_widgets/home/bottom_nav_bar.dart';
 import 'package:studdy/src/common_widgets/home/top_back_nav_bar.dart';
 
 import 'package:studdy/src/common_widgets/home/course_slider.dart';
@@ -9,6 +10,7 @@ class BookMarks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+          bottomNavigationBar: BottomNavigation(initialIndex: 2,),
       body: Padding(padding: EdgeInsets.only(left: 23.w, right: 23.w, top: 50.h),
         child: SingleChildScrollView(
           child: Column(children: [

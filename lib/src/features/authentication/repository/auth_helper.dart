@@ -13,6 +13,7 @@ import 'package:studdy/src/features/authentication/screens/login.dart';
 import 'package:studdy/src/features/authentication/screens/onboarding.dart';
 import 'package:studdy/src/features/authentication/screens/welcome.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
+import 'package:studdy/src/features/home/screens/base_page.dart';
 import 'package:studdy/src/features/home/screens/home_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

@@ -1,25 +1,53 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:studdy/src/constants/colors.dart';
+import 'package:get/get.dart';
+import 'package:studdy/src/features/bookmarks/bookmarks.dart';
+import 'package:studdy/src/features/home/screens/home_page.dart';
+import 'package:studdy/src/features/my_courses/screens/my_courses.dart';
+import 'package:studdy/src/features/profile/screens/profile_main.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+  final int initialIndex; // Add initialIndex parameter
+
+  const BottomNavigation({Key? key, required this.initialIndex})
+      : super(key: key);
 
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
-  var _currentIndex = 0;
+  late int _currentIndex; // Define _currentIndex as a late variable
   var _selectedColor = AppColors.primaryDarkColor;
+
+  // Define routes for each page
+  final List<Widget> _pages = [
+    HomePage(),
+    MyCourses(),
+    BookMarks(),
+    ProfileMain(),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize _currentIndex with the initialIndex provided
+    _currentIndex = widget.initialIndex;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SalomonBottomBar(
       currentIndex: _currentIndex,
-      onTap: (i) => setState(() => _currentIndex = i),
+      onTap: (i) {
+        // Update current index
+        setState(() => _currentIndex = i);
+        // Navigate to the corresponding page
+        Get.to(_pages[i]);
+      },
       items: [
         /// Home
         SalomonBottomBarItem(
@@ -51,14 +79,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
           selectedColor: _selectedColor,
         ),
 
-        // SalomonBottomBarItem(
-        //   icon: SvgPicture.asset("assets/images/svg/comment.svg",
-        //       color: _selectedColor, height: 20.h),
-        //   title: Text("Chat"),
-        //   selectedColor: _selectedColor,
-        // ),
-
-        /// Profile
         SalomonBottomBarItem(
           icon: SvgPicture.asset("assets/images/svg/user.svg",
               color: _selectedColor, height: 20.h),

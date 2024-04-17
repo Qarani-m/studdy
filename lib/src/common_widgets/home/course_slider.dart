@@ -9,15 +9,19 @@ class Course extends StatelessWidget {
               final String title;
               final String stars;
               final String imageUrl;
+               final bool largeImage;  // Optional parameter
+
+
   const Course({
+      this.largeImage = false,
     super.key, required this.price, required this.tag, required this.instructor, required this.title, required this.stars, required this.imageUrl,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 230.h,
-        width: 250.w,
+        height:largeImage? 260.h: 230.h,
+        width: largeImage? double.maxFinite: 250.w,
         // color: Colors.red,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -26,8 +30,8 @@ class Course extends StatelessWidget {
               padding: EdgeInsets.symmetric(
                   horizontal: 10.w, vertical: 10.w),
               alignment: Alignment.topCenter,
-              height: 150,
-              width: 250.w,
+              height: largeImage? 165.h:150.h,
+              width: largeImage? double.maxFinite:250.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15.r),
                   image: DecorationImage(
@@ -73,7 +77,7 @@ class Course extends StatelessWidget {
              SizedBox(
           // color:Colors.amber,
           height: 80.h,
-          width: 250.w,
+          width: largeImage? double.maxFinite:250.w,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -98,9 +102,6 @@ class Course extends StatelessWidget {
               ),
               child:  Center(child: Text(tag,style:Theme.of(context).textTheme.bodySmall?.copyWith(color:AppColors.primaryColor))),
             )
-           
-
-
             ],)
             
           ]),
