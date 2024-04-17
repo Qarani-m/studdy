@@ -27,6 +27,7 @@ class MyCourses extends StatelessWidget {
                   children: List.generate(2, (index) =>Padding(
                     padding:  EdgeInsets.only(bottom: 30.h),
                     child: Course(
+                      id:"1",
                       largeImage:true,
                       imageUrl: "assets/images/home/image5.jpg",
                       stars: "4.5",

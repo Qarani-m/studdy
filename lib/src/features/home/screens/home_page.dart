@@ -162,6 +162,7 @@ class HomePageMain extends StatelessWidget {
             return Builder(
               builder: (BuildContext context) {
                 return Course(
+                  id:"1",
                     imageUrl: "assets/images/home/image5.jpg",
                     stars: "4.5",
                     title: "Design Thinking Fundamentals",
@@ -248,6 +249,7 @@ class HomePageMain extends StatelessWidget {
             return Builder(
               builder: (BuildContext context) {
                 return Course(
+                  id:"1",
                     imageUrl: "assets/images/home/image5.jpg",
                     stars: "4.5",
                     title: "Design Thinking Fundamentals",
