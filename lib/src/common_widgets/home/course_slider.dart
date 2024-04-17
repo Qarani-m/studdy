@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:studdy/src/constants/colors.dart';
+import 'package:studdy/src/features/courses/screens/course_details_page.dart';
 import 'package:studdy/src/features/home/controllers/home_controller_main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -17,16 +18,34 @@ class Course extends StatelessWidget {
 
     HomeControllerMain mainController = Get.put(HomeControllerMain());
 
+Course({
+    Key? key,
+    this.largeImage = false,
+    required this.price,
+    required this.tag,
+    required this.instructor,
+    required this.title,
+    required this.stars,
+    required this.imageUrl,
+    required this.id,
+  }) : super(key: key) {
+    // Initialize params here in the constructor
+    params = {"courseId": id};
+  }
 
-   Course({
-      this.largeImage = false,
-    super.key, required this.price, required this.tag, required this.instructor, required this.title, required this.stars, required this.imageUrl, required this.id,
-  });
+   late final Map<String, dynamic> params;
+
 
   @override
   Widget build(BuildContext context) {
+
     return GestureDetector(
-      onTap: ,
+       onTap: () {
+    Get.to(
+       () => CourseDetails(),
+      arguments: params, // Pass the courseId as an argument
+    );
+  },
       child: SizedBox(
           height:largeImage? 260.h: 260.h,
           width: largeImage? double.maxFinite: 250.w,

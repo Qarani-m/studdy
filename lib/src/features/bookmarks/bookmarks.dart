@@ -22,7 +22,8 @@ class BookMarks extends StatelessWidget {
               children: [
                 BackNavBar(title: "Bookmarks"),
                 SizedBox(height: 20.h),
-                Obx(()=>Container(
+                // Obx(()=>
+                Container(
                     height: 700.h,
                     width: double.maxFinite,
                     child: SingleChildScrollView(
@@ -40,7 +41,7 @@ class BookMarks extends StatelessWidget {
                             ),
                     ),
                   ),
-                ),
+                // ),
               ],
             ),
           ),
