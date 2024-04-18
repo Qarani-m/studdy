@@ -169,13 +169,13 @@ final List<dynamic> lessonIds;
                   icon: Icon(Icons.arrow_back_rounded)),
             ),
             Row(children: [
-              GestureDetector(
-                onTap: () {
-                  AppNavigation.goBackHome();
-                },
-                child:
-                    const ThumnailHoverIcons(icon: Icon(Icons.share)),
-              ),
+              // GestureDetector(
+              //   onTap: () {
+              //     AppNavigation.goBackHome();
+              //   },
+              //   child:
+              //       const ThumnailHoverIcons(icon: Icon(Icons.share)),
+              // ),
               SizedBox(
                 width: 10.w,
               ),
@@ -412,12 +412,12 @@ class ReviewsCourses extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const String inputData =
-        "When using custom values we have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our targe have specified the to be our target text for highlighting  with purple italic font. We know that the website is a very useful website. (rti..notNow should not be parsed) But Instagram is more fun to use. We should not forget the contribution of wikipedia played in the growth of web. If you like this package do consider liking it so that it could be useful to more developers like you. Thank you for your time";
+        "When using custom values we have specified the to be our targe have specified the to be our targe have specified ";
 
     return SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Text(
-        "Reviews (32)",
+        "Reviews (${reviews.length})",
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             fontSize: 15.sp,
             color: AppColors.primaryTextDarkColor.withOpacity(0.9)),
@@ -434,17 +434,6 @@ class ReviewsCourses extends StatelessWidget {
                     children: [
                   Row(
                     children: [
-                      Container(
-                        height: 50.h,
-                        width: 50.h,
-                        decoration: const BoxDecoration(
-                            // color: Colors.green,
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image:
-                                    AssetImage("assets/images/home/tutor4.jpg"),
-                                fit: BoxFit.cover)),
-                      ),
                       SizedBox(width: 5.w),
                       Text("Sofia Reyes",
                           style: Theme.of(context)
@@ -456,18 +445,14 @@ class ReviewsCourses extends StatelessWidget {
                                       .withOpacity(0.9))),
                     ],
                   ),
-                  Text("45 days ago",
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          fontSize: 13.sp,
-                          color: AppColors.primaryTextDarkColor,
-                          fontWeight: FontWeight.w400))
+                
                 ])),
           ),
           SizedBox(
             height: 10.h,
           ),
           SizedBox(
-            height: 76.h,
+            height: 100.h,
             child: ParsedReadMore(
               inputData,
               trimMode: TrimMode.line,
@@ -495,36 +480,7 @@ class ReviewsCourses extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
-          Row(children: [
-            const Icon(
-              Icons.star_outlined,
-              color: AppColors.primaryColor,
-            ),
-            const Icon(
-              Icons.star,
-              color: AppColors.primaryColor,
-            ),
-            const Icon(
-              Icons.star,
-              color: AppColors.primaryColor,
-            ),
-            const Icon(
-              Icons.star,
-              color: AppColors.primaryColor,
-            ),
-            const Icon(
-              Icons.star,
-              color: AppColors.primaryColor,
-            ),
-            SizedBox(
-              width: 10.w,
-            ),
-            Text("5",
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    fontSize: 13.sp,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.primaryTextDarkColor)),
-          ])
+        
         ]),
       )
     ]));

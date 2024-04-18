@@ -33,7 +33,7 @@ class _NotificationsState extends State<Notifications> {
               ),
               OneNotification(
                 icon:Icon(Icons.phone_missed_sharp, size: 40.h,color: AppColors.primaryDarkColor,),
-                title: "Missed Call", 
+                title: "New course available", 
                 text: "Lorem ipsum dolor sit amet, consec tetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.", 
                 time: "1h"),
 
@@ -136,7 +136,7 @@ class NotificationRightLeft extends StatelessWidget {
           GestureDetector(
               onTap: () {},
               child: Text(
-                "Mark all as read",
+               "",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: AppColors.primaryColor, fontWeight: FontWeight.w300),
               )),

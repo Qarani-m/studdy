@@ -127,18 +127,6 @@ class _SearchPageState extends State<SearchPage> with TickerProviderStateMixin {
                               ),
                               Column(children: [
                                 CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
-                                CourseSearchResult(),
                               ])
                             ]),
                           ),
