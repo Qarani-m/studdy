@@ -14,7 +14,7 @@ metadata:
 
 **Date:** 2025-10-22  
 **Author:** Your Name
-
+//
 ## Summary
 Today I worked on the commit-processing pipeline for the "Commit Journaler" project. The goal was to detect commits that include a `journal.md` file and create a related journal record in the database.
 
